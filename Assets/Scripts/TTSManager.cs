@@ -7,7 +7,6 @@ public class TTSManager : MonoBehaviour
     public static TTSManager Instance;
     public AudioSource audioSource;
 
-    // HAFIZA
     private string hafizaKelime = "";
     private string hafizaCumle = "";
 
@@ -21,8 +20,6 @@ public class TTSManager : MonoBehaviour
     {
         hafizaKelime = kelime;
         hafizaCumle = cumle;
-        // İlk görüşte ikisini de okusun
-        Speak(kelime + ". " + cumle);
     }
 
     public void SadeceKelimeyiOku()
@@ -35,7 +32,6 @@ public class TTSManager : MonoBehaviour
         if (!string.IsNullOrEmpty(hafizaCumle)) Speak(hafizaCumle);
     }
 
-    // DÜZELTME BURADA: "private" yerine "public" yaptık!
     public void Speak(string text)
     {
         StartCoroutine(SesIndirVeCal(text));
