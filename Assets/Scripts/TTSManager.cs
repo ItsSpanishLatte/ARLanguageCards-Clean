@@ -7,6 +7,7 @@ public class TTSManager : MonoBehaviour
     public static TTSManager Instance;
     public AudioSource audioSource;
 
+    // HAFIZA (Karttaki bilgileri burada tutuyoruz)
     private string hafizaKelime = "";
     private string hafizaCumle = "";
 
@@ -16,19 +17,25 @@ public class TTSManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
+    // GÜNCELLEME: Artık bu fonksiyon sadece bilgileri kaydediyor, SES ÇIKARMIYOR.
     public void KartTanimlaVeOku(string kelime, string cumle)
     {
         hafizaKelime = kelime;
         hafizaCumle = cumle;
+        
+        // Buradaki "Speak(...)" komutunu sildik. 
+        // Artık kartı görünce otomatik konuşmayacak.
     }
 
     public void SadeceKelimeyiOku()
     {
+        // Butona basılınca hafızadaki kelimeyi okur
         if (!string.IsNullOrEmpty(hafizaKelime)) Speak(hafizaKelime);
     }
 
     public void SadeceCumleyiOku()
     {
+        // Butona basılınca hafızadaki cümleyi okur
         if (!string.IsNullOrEmpty(hafizaCumle)) Speak(hafizaCumle);
     }
 

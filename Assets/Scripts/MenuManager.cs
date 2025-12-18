@@ -12,4 +12,9 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("AnimalsScene");
     }
+
+    public void VehiclesSahnesiniAc()
+    {
+        SceneManager.LoadScene("VehiclesScene");
+    }
 }
