@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AnimalsScene.unity
     guid: 4eb670817a547e840a2e024212d7d05a
+  - enabled: 1
+    path: Assets/Scenes/VehiclesScene.unity
+    guid: 58b77ca74026dea498139a05293cec14
   m_configObjects: {}
