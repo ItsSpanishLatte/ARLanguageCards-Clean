@@ -14,7 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FruitsScene.unity
     guid: c372577cbfd286f488816940bfbf459c
-  - enabled: 1
-    path: Assets/Scenes/AnimalsScene.unity
-    guid: 4eb670817a547e840a2e024212d7d05a
   m_configObjects: {}
