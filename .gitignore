@@ -74,9 +74,11 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+
 *.tgz
 /com.ptc.vuforia.engine-*/
 /Assets/Resources/VuforiaConfiguration.asset
+
 
 # Firebase Large Files
 **/Firebase/Plugins/x86_64/*.bundle
