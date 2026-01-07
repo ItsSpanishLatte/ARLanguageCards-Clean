@@ -4485,9 +4485,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   donusHizi: 5
-  buyutmeHizi: 1
+  buyutmeHizi: 2
   minBoyut: 0.1
-  maxBoyut: 3
+  maxBoyut: 5
   ziplamaGucu: 0.5
 --- !u!4 &1981119916 stripped
 Transform:
