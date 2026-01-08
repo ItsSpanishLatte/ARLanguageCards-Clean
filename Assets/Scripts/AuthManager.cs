@@ -11,18 +11,19 @@ public class AuthManager : MonoBehaviour
     [Header("GÝRÝÞ EKRANI (Ana Sahne)")]
     public InputField girisEmailInput;
     public InputField girisPasswordInput;
-    public TextMeshProUGUI bildirimText;
+    public TextMeshProUGUI bildirimText; // Giriþ ekranýndaki hata yazýsý
 
     [Header("KAYIT PANELÝ (Pop-up)")]
     public GameObject kayitPaneli;
     public InputField kayitEmailInput;
     public InputField kayitPasswordInput;
+    public TextMeshProUGUI kayitBildirimText; // YENÝ: Kayýt panelindeki hata yazýsý
 
     private FirebaseAuth auth;
 
     private void Start()
     {
-        auth = FirebaseAuth.DefaultInstance;
+        auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
         if (kayitPaneli != null)
             kayitPaneli.SetActive(false);
     }
@@ -30,13 +31,11 @@ public class AuthManager : MonoBehaviour
     public void KayitPaneliniAc()
     {
         kayitPaneli.SetActive(true);
-        bildirimText.text = ""; 
+        if (kayitBildirimText != null) kayitBildirimText.text = "";
+        bildirimText.text = "";
     }
 
-    public void KayitPaneliniKapat()
-    {
-        kayitPaneli.SetActive(false);
-    }
+    public void KayitPaneliniKapat() => kayitPaneli.SetActive(false);
 
     public void KayitOl()
     {
@@ -45,7 +44,7 @@ public class AuthManager : MonoBehaviour
 
         if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
         {
-            bildirimText.text = "Kayýt için boþ alan býrakmayýn!";
+            if (kayitBildirimText != null) kayitBildirimText.text = "Alanlarý doldurun.";
             return;
         }
 
@@ -54,18 +53,18 @@ public class AuthManager : MonoBehaviour
 
     private IEnumerator KayitIslemi(string email, string password)
     {
-        bildirimText.text = "Kayýt yapýlýyor...";
+        if (kayitBildirimText != null) kayitBildirimText.text = "Kaydediliyor...";
         var islem = auth.CreateUserWithEmailAndPasswordAsync(email, password);
         yield return new WaitUntil(() => islem.IsCompleted);
 
         if (islem.Exception != null)
         {
-            bildirimText.text = "Kayýt Hatasý: " + islem.Exception.GetBaseException().Message;
+            if (kayitBildirimText != null) kayitBildirimText.text = HataMesajiniSadelestir(islem.Exception);
         }
         else
         {
-            bildirimText.text = "Kayýt Baþarýlý! Þimdi giriþ yapabilirsin.";
-            KayitPaneliniKapat(); 
+            bildirimText.text = "Kayýt Baþarýlý!";
+            KayitPaneliniKapat();
             girisEmailInput.text = email;
         }
     }
@@ -77,7 +76,7 @@ public class AuthManager : MonoBehaviour
 
         if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
         {
-            bildirimText.text = "Giriþ bilgileri eksik!";
+            bildirimText.text = "Bilgiler eksik.";
             return;
         }
 
@@ -86,19 +85,39 @@ public class AuthManager : MonoBehaviour
 
     private IEnumerator GirisIslemi(string email, string password)
     {
-        bildirimText.text = "Giriþ yapýlýyor...";
+        bildirimText.text = "Baðlanýyor...";
         var islem = auth.SignInWithEmailAndPasswordAsync(email, password);
         yield return new WaitUntil(() => islem.IsCompleted);
 
         if (islem.Exception != null)
         {
-            bildirimText.text = "Giriþ Baþarýsýz: " + islem.Exception.GetBaseException().Message;
+            bildirimText.text = HataMesajiniSadelestir(islem.Exception);
         }
         else
         {
-            bildirimText.text = "Giriþ Baþarýlý! Yönlendiriliyor...";
+            bildirimText.text = "Hoþ geldiniz!";
             yield return new WaitForSeconds(1.0f);
             SceneManager.LoadScene("MainMenu");
+        }
+    }
+
+    // Teknik hatalarý kýsa kullanýcý dostu cümlelere çevirir
+    private string HataMesajiniSadelestir(System.AggregateException exception)
+    {
+        FirebaseException firebaseEx = exception.GetBaseException() as FirebaseException;
+        if (firebaseEx == null) return "Hata oluþtu.";
+
+        AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
+
+        switch (errorCode)
+        {
+            case AuthError.InvalidEmail: return "E-posta geçersiz.";
+            case AuthError.WrongPassword: return "Þifre hatalý.";
+            case AuthError.UserNotFound: return "Hesap bulunamadý.";
+            case AuthError.EmailAlreadyInUse: return "E-posta kayýtlý.";
+            case AuthError.WeakPassword: return "Þifre zayýf.";
+            case AuthError.NetworkRequestFailed: return "Ýnternet yok.";
+            default: return "Tekrar deneyin.";
         }
     }
 }
