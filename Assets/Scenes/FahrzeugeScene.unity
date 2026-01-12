@@ -503,6 +503,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b2d9f451fd7f4ace8b9e173654b2235, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1901103736}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b2d9f451fd7f4ace8b9e173654b2235, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1901103738}
   m_SourcePrefab: {fileID: 100100000, guid: 1b2d9f451fd7f4ace8b9e173654b2235, type: 3}
 --- !u!1001 &73986948
 PrefabInstance:
@@ -578,6 +581,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 234ecb5e580914f2a9c16496d5917d1e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 85950384}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 234ecb5e580914f2a9c16496d5917d1e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 85950386}
   m_SourcePrefab: {fileID: 100100000, guid: 234ecb5e580914f2a9c16496d5917d1e, type: 3}
 --- !u!1 &85950380 stripped
 GameObject:
@@ -626,7 +632,30 @@ MonoBehaviour:
   buyutmeHizi: 2
   minBoyut: 0.1
   maxBoyut: 5
+  gecmeNotu: 60
+  objeAdi: Das Flugzeug
   ziplamaGucu: 0.5
+--- !u!95 &85950386
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85950380}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd21a7852e7f6d946bab83a9fb25239c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &170076625
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,7 +855,30 @@ MonoBehaviour:
   buyutmeHizi: 2
   minBoyut: 0.1
   maxBoyut: 5
+  gecmeNotu: 60
+  objeAdi: Der Hubschrauber
   ziplamaGucu: 0.5
+--- !u!95 &178559338
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178559332}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd21a7852e7f6d946bab83a9fb25239c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &301675886 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ef5be7dbc3df94dca80c25e74d98ef5e, type: 3}
@@ -874,7 +926,30 @@ MonoBehaviour:
   buyutmeHizi: 2
   minBoyut: 0.1
   maxBoyut: 5
+  gecmeNotu: 60
+  objeAdi: Der Krankenwagen
   ziplamaGucu: 0.5
+--- !u!95 &301675892
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301675886}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd21a7852e7f6d946bab83a9fb25239c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &302127277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -949,6 +1024,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 15591c467282541bab3ddde7d3ac720d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 178559336}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 15591c467282541bab3ddde7d3ac720d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 178559338}
   m_SourcePrefab: {fileID: 100100000, guid: 15591c467282541bab3ddde7d3ac720d, type: 3}
 --- !u!1 &372421366
 GameObject:
@@ -1164,6 +1242,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2198236148893643018, guid: 2db26e405c07e4487bba649022f3ed40, type: 3}
       insertIndex: -1
       addedObject: {fileID: 681574089}
+    - targetCorrespondingSourceObject: {fileID: 2198236148893643018, guid: 2db26e405c07e4487bba649022f3ed40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 681574091}
   m_SourcePrefab: {fileID: 100100000, guid: 2db26e405c07e4487bba649022f3ed40, type: 3}
 --- !u!1 &417716533 stripped
 GameObject:
@@ -1212,7 +1293,30 @@ MonoBehaviour:
   buyutmeHizi: 2
   minBoyut: 0.1
   maxBoyut: 5
+  gecmeNotu: 60
+  objeAdi: Das Auto
   ziplamaGucu: 0.5
+--- !u!95 &417716539
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417716533}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd21a7852e7f6d946bab83a9fb25239c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &486251575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,7 +1498,30 @@ MonoBehaviour:
   buyutmeHizi: 2
   minBoyut: 0.1
   maxBoyut: 5
+  gecmeNotu: 60
+  objeAdi: Der Lastwagen
   ziplamaGucu: 0.5
+--- !u!95 &486679800
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486679794}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd21a7852e7f6d946bab83a9fb25239c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &512771160
 GameObject:
   m_ObjectHideFlags: 0
@@ -2272,7 +2399,30 @@ MonoBehaviour:
   buyutmeHizi: 2
   minBoyut: 0.1
   maxBoyut: 5
+  gecmeNotu: 60
+  objeAdi: Das Motorrad
   ziplamaGucu: 0.5
+--- !u!95 &681574091
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681574087}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd21a7852e7f6d946bab83a9fb25239c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &750490022
 GameObject:
   m_ObjectHideFlags: 0
@@ -2631,6 +2781,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ef5be7dbc3df94dca80c25e74d98ef5e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 301675890}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ef5be7dbc3df94dca80c25e74d98ef5e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 301675892}
   m_SourcePrefab: {fileID: 100100000, guid: ef5be7dbc3df94dca80c25e74d98ef5e, type: 3}
 --- !u!1001 &770796564
 PrefabInstance:
@@ -2706,6 +2859,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1205614443198496, guid: f855683b127eede4c9d170be2672ae27, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1972467650}
+    - targetCorrespondingSourceObject: {fileID: 1205614443198496, guid: f855683b127eede4c9d170be2672ae27, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1972467652}
   m_SourcePrefab: {fileID: 100100000, guid: f855683b127eede4c9d170be2672ae27, type: 3}
 --- !u!1 &774458303
 GameObject:
@@ -3276,6 +3432,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2a72fabd85ec347019ee1968eb503667, type: 3}
       insertIndex: -1
       addedObject: {fileID: 417716537}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2a72fabd85ec347019ee1968eb503667, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 417716539}
   m_SourcePrefab: {fileID: 100100000, guid: 2a72fabd85ec347019ee1968eb503667, type: 3}
 --- !u!1 &1135358568
 GameObject:
@@ -3830,6 +3989,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8103ac7bbcad5499cb59e410ab523ba2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2129541987}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8103ac7bbcad5499cb59e410ab523ba2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2129541989}
   m_SourcePrefab: {fileID: 100100000, guid: 8103ac7bbcad5499cb59e410ab523ba2, type: 3}
 --- !u!1 &1661074785 stripped
 GameObject:
@@ -3878,7 +4040,30 @@ MonoBehaviour:
   buyutmeHizi: 2
   minBoyut: 0.1
   maxBoyut: 5
+  gecmeNotu: 60
+  objeAdi: Das Feuerwehrauto
   ziplamaGucu: 0.5
+--- !u!95 &1661074791
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661074785}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd21a7852e7f6d946bab83a9fb25239c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1682554674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3953,6 +4138,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d56d7a05703ab4a4da6cb4145b99440b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 486679798}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d56d7a05703ab4a4da6cb4145b99440b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 486679800}
   m_SourcePrefab: {fileID: 100100000, guid: d56d7a05703ab4a4da6cb4145b99440b, type: 3}
 --- !u!1001 &1696929683
 PrefabInstance:
@@ -4028,6 +4216,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3b3ed1ca82ef745c999ec24ef9d2a66c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1661074789}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3b3ed1ca82ef745c999ec24ef9d2a66c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1661074791}
   m_SourcePrefab: {fileID: 100100000, guid: 3b3ed1ca82ef745c999ec24ef9d2a66c, type: 3}
 --- !u!1 &1706668059
 GameObject:
@@ -4368,7 +4559,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b99dec92e4dc224e843c6802bcc58b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuSahneAdi: MainMenu
 --- !u!114 &1884265215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4510,7 +4700,30 @@ MonoBehaviour:
   buyutmeHizi: 2
   minBoyut: 0.1
   maxBoyut: 5
+  gecmeNotu: 60
+  objeAdi: Das Polizeiauto
   ziplamaGucu: 0.5
+--- !u!95 &1901103738
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901103732}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd21a7852e7f6d946bab83a9fb25239c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1972467648 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1205614443198496, guid: f855683b127eede4c9d170be2672ae27, type: 3}
@@ -4558,7 +4771,30 @@ MonoBehaviour:
   buyutmeHizi: 2
   minBoyut: 0.1
   maxBoyut: 5
+  gecmeNotu: 60
+  objeAdi: Das Schiff
   ziplamaGucu: 0.5
+--- !u!95 &1972467652
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972467648}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd21a7852e7f6d946bab83a9fb25239c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2129541983 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8103ac7bbcad5499cb59e410ab523ba2, type: 3}
@@ -4606,7 +4842,30 @@ MonoBehaviour:
   buyutmeHizi: 2
   minBoyut: 0.1
   maxBoyut: 5
+  gecmeNotu: 60
+  objeAdi: Der Zug
   ziplamaGucu: 0.5
+--- !u!95 &2129541989
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129541983}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd21a7852e7f6d946bab83a9fb25239c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
