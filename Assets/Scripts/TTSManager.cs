@@ -7,7 +7,10 @@ public class TTSManager : MonoBehaviour
     public static TTSManager Instance;
     public AudioSource audioSource;
 
-    // HAFIZA (Karttaki bilgileri burada tutuyoruz)
+    [Header("Dil Ayarı (en=İng, de=Alm, tr=Tr)")]
+    public string dilKodu = "en"; // Burayı Inspector'dan "de" yaparsan Almanca okur!
+
+    // HAFIZA
     private string hafizaKelime = "";
     private string hafizaCumle = "";
 
@@ -17,25 +20,19 @@ public class TTSManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    // GÜNCELLEME: Artık bu fonksiyon sadece bilgileri kaydediyor, SES ÇIKARMIYOR.
     public void KartTanimlaVeOku(string kelime, string cumle)
     {
         hafizaKelime = kelime;
         hafizaCumle = cumle;
-        
-        // Buradaki "Speak(...)" komutunu sildik. 
-        // Artık kartı görünce otomatik konuşmayacak.
     }
 
     public void SadeceKelimeyiOku()
     {
-        // Butona basılınca hafızadaki kelimeyi okur
         if (!string.IsNullOrEmpty(hafizaKelime)) Speak(hafizaKelime);
     }
 
     public void SadeceCumleyiOku()
     {
-        // Butona basılınca hafızadaki cümleyi okur
         if (!string.IsNullOrEmpty(hafizaCumle)) Speak(hafizaCumle);
     }
 
@@ -46,7 +43,9 @@ public class TTSManager : MonoBehaviour
 
     IEnumerator SesIndirVeCal(string text)
     {
-        string url = "https://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q=" + text + "&tl=en";
+        // URL'nin sonundaki "tl=" kısmına dilKodu değişkenini ekledik
+        string url = "https://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q=" + text + "&tl=" + dilKodu;
+        
         using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG))
         {
             yield return www.SendWebRequest();
@@ -55,6 +54,10 @@ public class TTSManager : MonoBehaviour
                 AudioClip clip = DownloadHandlerAudioClip.GetContent(www);
                 audioSource.clip = clip;
                 audioSource.Play();
+            }
+            else
+            {
+                Debug.LogError("Ses İndirme Hatası (İnterneti Kontrol Et): " + www.error);
             }
         }
     }

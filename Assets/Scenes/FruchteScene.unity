@@ -2087,6 +2087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 999160258}
+  dilKodu: de
 --- !u!4 &999160260
 Transform:
   m_ObjectHideFlags: 0

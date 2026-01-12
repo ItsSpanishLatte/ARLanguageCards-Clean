@@ -29,6 +29,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FruchteScene.unity
     guid: e31305bacf9af954297d555174735fb1
+  - enabled: 1
+    path: Assets/Scenes/FahrzeugeScene.unity
+    guid: e8f79f7f3a00a9a42878e9b187ffde2d
+  - enabled: 1
+    path: Assets/Scenes/TiereScene.unity
+    guid: 5cb5a2d101a1ef046a419da02db8c0d0
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 08265006ce467044b9c14c659abf7a19, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 64147aebfd1409345ae2fc65a3ceb3e4, type: 2}

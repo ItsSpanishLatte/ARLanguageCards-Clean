@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="10_lamm" size="1.000000 0.576172" />
+    <ImageTarget name="9_dertiger" size="1.000000 0.576172" />
+    <ImageTarget name="8_huhn" size="1.000000 0.576172" />
+    <ImageTarget name="7_fuchs" size="1.000000 0.576172" />
+    <ImageTarget name="6_pinguin" size="1.000000 0.576172" />
+    <ImageTarget name="5_reh" size="1.000000 0.576172" />
+    <ImageTarget name="4_vogel" size="1.000000 0.576172" />
+    <ImageTarget name="3_pferd" size="1.000000 0.576172" />
+    <ImageTarget name="2_hund" size="1.000000 0.576172" />
+    <ImageTarget name="1_katze" size="1.000000 0.576172" />
+  </Tracking>
+</QCARConfig>

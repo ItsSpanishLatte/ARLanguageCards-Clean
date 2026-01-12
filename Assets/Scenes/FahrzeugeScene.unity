@@ -213,13 +213,13 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: 1_car
+  mTrackableName: 1_auto
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/VehiclesDB.xml
-  mAspectRatio: 0.828125
+  mDataSetPath: Vuforia/FahrzeugeDB.xml
+  mAspectRatio: 1.286432
   mImageTargetType: 0
   mWidth: 1
-  mHeight: 0.828125
+  mHeight: 1.286432
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
@@ -253,8 +253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff939fe29c2378849a905b76613a891f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kelime: Car
-  cumle: The car moves on the road.
+  kelime: Das Auto
+  cumle: "Das Auto f\xE4hrt auf der Stra\xDFe."
 --- !u!114 &17841520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,8 +269,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 17841517}
   mHiddenRoot: {fileID: 0}
-  mTargetName: 1_car
-  mDatasetName: Vuforia/VehiclesDB.xml
+  mTargetName: 1_auto
+  mDatasetName: Vuforia/FahrzeugeDB.xml
   mCastedBehaviour: {fileID: 17841517}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
@@ -718,9 +718,9 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: 2_motorcycle
+  mTrackableName: 2_motorrad
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/VehiclesDB.xml
+  mDataSetPath: Vuforia/FahrzeugeDB.xml
   mAspectRatio: 1.286432
   mImageTargetType: 0
   mWidth: 1
@@ -758,8 +758,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff939fe29c2378849a905b76613a891f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kelime: Motorcycle
-  cumle: The motorcycle goes very fast.
+  kelime: Das Motorrad
+  cumle: "Das Motorrad f\xE4hrt sehr schnell."
 --- !u!114 &170076631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -774,8 +774,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 170076628}
   mHiddenRoot: {fileID: 0}
-  mTargetName: 2_motorcycle
-  mDatasetName: Vuforia/VehiclesDB.xml
+  mTargetName: 2_motorrad
+  mDatasetName: Vuforia/FahrzeugeDB.xml
   mCastedBehaviour: {fileID: 170076628}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
@@ -1384,9 +1384,9 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: 7_truck
+  mTrackableName: 7_lastwagen
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/VehiclesDB.xml
+  mDataSetPath: Vuforia/FahrzeugeDB.xml
   mAspectRatio: 1.286432
   mImageTargetType: 0
   mWidth: 1
@@ -1424,8 +1424,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff939fe29c2378849a905b76613a891f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kelime: Truck
-  cumle: The truck carries heavy loads.
+  kelime: Der Lastwagen
+  cumle: Der Lastwagen transportiert schwere Lasten.
 --- !u!114 &372421372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1440,8 +1440,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 372421369}
   mHiddenRoot: {fileID: 0}
-  mTargetName: 7_truck
-  mDatasetName: Vuforia/VehiclesDB.xml
+  mTargetName: 7_lastwagen
+  mDatasetName: Vuforia/FahrzeugeDB.xml
   mCastedBehaviour: {fileID: 372421369}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
@@ -1695,9 +1695,9 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: 4_airplane
+  mTrackableName: 4_flugzeug
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/VehiclesDB.xml
+  mDataSetPath: Vuforia/FahrzeugeDB.xml
   mAspectRatio: 1.286432
   mImageTargetType: 0
   mWidth: 1
@@ -1735,8 +1735,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff939fe29c2378849a905b76613a891f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kelime: Airplane
-  cumle: The airplane flies in the sky.
+  kelime: Das Flugzeug
+  cumle: 'Das Flugzeug fliegt am Himmel. '
 --- !u!114 &555011896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1751,8 +1751,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 555011893}
   mHiddenRoot: {fileID: 0}
-  mTargetName: 4_airplane
-  mDatasetName: Vuforia/VehiclesDB.xml
+  mTargetName: 4_flugzeug
+  mDatasetName: Vuforia/FahrzeugeDB.xml
   mCastedBehaviour: {fileID: 555011893}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
@@ -1847,9 +1847,9 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: 3_ship
+  mTrackableName: 3_schiff
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/VehiclesDB.xml
+  mDataSetPath: Vuforia/FahrzeugeDB.xml
   mAspectRatio: 1.286432
   mImageTargetType: 0
   mWidth: 1
@@ -1887,8 +1887,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff939fe29c2378849a905b76613a891f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kelime: Ship
-  cumle: The ship sails on the sea.
+  kelime: Das Schiff
+  cumle: "Das Schiff f\xE4hrt auf dem Meer. "
 --- !u!114 &573734122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1903,8 +1903,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 573734119}
   mHiddenRoot: {fileID: 0}
-  mTargetName: 3_ship
-  mDatasetName: Vuforia/VehiclesDB.xml
+  mTargetName: 3_schiff
+  mDatasetName: Vuforia/FahrzeugeDB.xml
   mCastedBehaviour: {fileID: 573734119}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
@@ -1999,9 +1999,9 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: 10_police_car
+  mTrackableName: 10_polizeiauto
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/VehiclesDB.xml
+  mDataSetPath: Vuforia/FahrzeugeDB.xml
   mAspectRatio: 1.286432
   mImageTargetType: 0
   mWidth: 1
@@ -2039,8 +2039,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff939fe29c2378849a905b76613a891f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kelime: Police Car
-  cumle: The police cars keeps people safe.
+  kelime: Das Polizeiauto
+  cumle: "Das Polizeiauto sch\xFCtzt die Menschen."
 --- !u!114 &612032601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2055,8 +2055,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 612032598}
   mHiddenRoot: {fileID: 0}
-  mTargetName: 10_police_car
-  mDatasetName: Vuforia/VehiclesDB.xml
+  mTargetName: 10_polizeiauto
+  mDatasetName: Vuforia/FahrzeugeDB.xml
   mCastedBehaviour: {fileID: 612032598}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
@@ -2332,9 +2332,9 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: 9_fire_truck
+  mTrackableName: 9_feurerwehrauto
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/VehiclesDB.xml
+  mDataSetPath: Vuforia/FahrzeugeDB.xml
   mAspectRatio: 1.286432
   mImageTargetType: 0
   mWidth: 1
@@ -2372,8 +2372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff939fe29c2378849a905b76613a891f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kelime: Fire Truck
-  cumle: The fire truck puts out fires.
+  kelime: Das Feuerwehrauto
+  cumle: "Das Feuerwehrauto l\xF6scht Br\xE4nde."
 --- !u!114 &752811361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2388,8 +2388,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 752811358}
   mHiddenRoot: {fileID: 0}
-  mTargetName: 9_fire_truck
-  mDatasetName: Vuforia/VehiclesDB.xml
+  mTargetName: 9_feurerwehrauto
+  mDatasetName: Vuforia/FahrzeugeDB.xml
   mCastedBehaviour: {fileID: 752811358}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
@@ -2574,6 +2574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 832702833}
+  dilKodu: de
 --- !u!82 &832702833
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2844,9 +2845,9 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: 5_helicopter
+  mTrackableName: 5_hubschrauber
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/VehiclesDB.xml
+  mDataSetPath: Vuforia/FahrzeugeDB.xml
   mAspectRatio: 1.286432
   mImageTargetType: 0
   mWidth: 1
@@ -2884,8 +2885,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff939fe29c2378849a905b76613a891f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kelime: Helicopter
-  cumle: The helicopter flies very high.
+  kelime: Der Hubschrauber
+  cumle: 'Der Hubschrauber fliegt sehr hoch. '
 --- !u!114 &1054260696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2900,8 +2901,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 1054260693}
   mHiddenRoot: {fileID: 0}
-  mTargetName: 5_helicopter
-  mDatasetName: Vuforia/VehiclesDB.xml
+  mTargetName: 5_hubschrauber
+  mDatasetName: Vuforia/FahrzeugeDB.xml
   mCastedBehaviour: {fileID: 1054260693}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
@@ -3593,13 +3594,13 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: 8_ambulance
+  mTrackableName: 8_krankenwagen
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/VehiclesDB.xml
-  mAspectRatio: 1.132743
+  mDataSetPath: Vuforia/FahrzeugeDB.xml
+  mAspectRatio: 1.286432
   mImageTargetType: 0
   mWidth: 1
-  mHeight: 1.132743
+  mHeight: 1.286432
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
@@ -3633,8 +3634,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff939fe29c2378849a905b76613a891f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kelime: Ambulance
-  cumle: The ambulance helps sick people.
+  kelime: Der Krankenwagen
+  cumle: Der Krankenwagen hilft kranken Menschen.
 --- !u!114 &1385801864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3649,8 +3650,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 1385801861}
   mHiddenRoot: {fileID: 0}
-  mTargetName: 8_ambulance
-  mDatasetName: Vuforia/VehiclesDB.xml
+  mTargetName: 8_krankenwagen
+  mDatasetName: Vuforia/FahrzeugeDB.xml
   mCastedBehaviour: {fileID: 1385801861}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
@@ -4405,9 +4406,9 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: 6_train
+  mTrackableName: 6_zug
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/VehiclesDB.xml
+  mDataSetPath: Vuforia/FahrzeugeDB.xml
   mAspectRatio: 1.286432
   mImageTargetType: 0
   mWidth: 1
@@ -4445,8 +4446,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff939fe29c2378849a905b76613a891f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kelime: Train
-  cumle: The train carries many people.
+  kelime: Der Zug
+  cumle: Der Zug transportiert viele Menschen.
 --- !u!114 &1706668065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4461,8 +4462,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 1706668062}
   mHiddenRoot: {fileID: 0}
-  mTargetName: 6_train
-  mDatasetName: Vuforia/VehiclesDB.xml
+  mTargetName: 6_zug
+  mDatasetName: Vuforia/FahrzeugeDB.xml
   mCastedBehaviour: {fileID: 1706668062}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}

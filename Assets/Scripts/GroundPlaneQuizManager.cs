@@ -102,7 +102,19 @@ public class GroundPlaneQuizManager : MonoBehaviour
 
     public void SoruSesiniDinle()
     {
-        // TTSManager varsa buraya ekle
+        // 1. Cevap belli mi kontrol et
+        if (string.IsNullOrEmpty(dogruCevapAdi)) return;
+
+        // 2. Senin TTSManager sahnede var mı?
+        if (TTSManager.Instance != null)
+        {
+            // Senin mevcut fonksiyonunu çağırıyoruz
+            TTSManager.Instance.Speak(dogruCevapAdi); 
+        }
+        else
+        {
+            Debug.LogWarning("TTSManager sahnede bulunamadı! Hierarchy'e ekledin mi?");
+        }
     }
 
     public void CevapVer(string tiklananAd, GameObject obje)
