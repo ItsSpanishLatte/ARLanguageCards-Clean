@@ -6,18 +6,18 @@ using System.Text;
 using System.IO;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; // Sahne kontrolü için eklendi
+using UnityEngine.SceneManagement;
 
 public class SpeechManager : MonoBehaviour
 {
     public static SpeechManager Instance;
 
-    [Header("Gemini Ayarlarý")]
+    [Header("Gemini AyarlarÄ±")]
     public string geminiApiKey = "BURAYA_API_KEY_YAZIN";
 
     private const string API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent";
 
-    [Header("UI Baðlantýlarý")]
+    [Header("UI BaÄŸlantÄ±larÄ±")]
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI buttonLabel;
     public TextMeshProUGUI buttonLabelCumle;
@@ -37,15 +37,15 @@ public class SpeechManager : MonoBehaviour
         if (Microphone.devices.Length > 0)
         {
             deviceName = Microphone.devices[0];
-            if (scoreText) scoreText.text = "Hazýr (Kart Göster)";
+            if (scoreText) scoreText.text = "HazÄ±r (Kart GÃ¶ster)";
         }
         else
         {
             if (scoreText) scoreText.text = "Mikrofon Yok!";
         }
 
-        if (buttonLabel) buttonLabel.text = "KELÝME PUANLA";
-        if (buttonLabelCumle) buttonLabelCumle.text = "CÜMLE PUANLA";
+        if (buttonLabel) buttonLabel.text = "KELÄ°ME PUANLA";
+        if (buttonLabelCumle) buttonLabelCumle.text = "CÃœMLE PUANLA";
     }
 
     public void HedefGuncelle(string kelime, string cumle)
@@ -60,14 +60,14 @@ public class SpeechManager : MonoBehaviour
 
     public void ButonMikrofonKelime()
     {
-        if (string.IsNullOrEmpty(aktifKelime)) { if (scoreText) scoreText.text = "Önce kart göster!"; return; }
+        if (string.IsNullOrEmpty(aktifKelime)) { if (scoreText) scoreText.text = "Ã–nce kart gÃ¶ster!"; return; }
         puanlamaCumleIcinMi = false;
         ButonMikrofonGenel(buttonLabel);
     }
 
     public void ButonMikrofonCumle()
     {
-        if (string.IsNullOrEmpty(aktifCumle)) { if (scoreText) scoreText.text = "Bu kartta cümle yok!"; return; }
+        if (string.IsNullOrEmpty(aktifCumle)) { if (scoreText) scoreText.text = "Bu kartta cÃ¼mle yok!"; return; }
         puanlamaCumleIcinMi = true;
         ButonMikrofonGenel(buttonLabelCumle);
     }
@@ -80,15 +80,15 @@ public class SpeechManager : MonoBehaviour
             isRecording = true;
             recordingClip = Microphone.Start(deviceName, false, 5, 44100);
             if (scoreText) { scoreText.text = "Dinliyorum..."; scoreText.color = Color.yellow; }
-            if (labelToChange) labelToChange.text = "BÝTÝR";
+            if (labelToChange) labelToChange.text = "BÄ°TÄ°R";
         }
         else
         {
             isRecording = false;
             int position = Microphone.GetPosition(deviceName);
             Microphone.End(deviceName);
-            if (scoreText) scoreText.text = "Gönderiliyor...";
-            if (labelToChange) labelToChange.text = puanlamaCumleIcinMi ? "CÜMLE PUANLA" : "KELÝME PUANLA";
+            if (scoreText) scoreText.text = "GÃ¶nderiliyor...";
+            if (labelToChange) labelToChange.text = puanlamaCumleIcinMi ? "CÃœMLE PUANLA" : "KELÄ°ME PUANLA";
             byte[] wavData = ConvertToWav(recordingClip, position);
             StartCoroutine(SendToGemini(wavData));
         }
@@ -99,12 +99,9 @@ public class SpeechManager : MonoBehaviour
         string url = $"{API_URL}?key={geminiApiKey}";
         string base64Audio = Convert.ToBase64String(audioData);
 
-        // --- DÝL KONTROLÜ ---
-        // Sahne ismi "De" ile bitiyorsa Almanca, bitmiyorsa Ýngilizce kabul eder.
         bool isGerman = SceneManager.GetActiveScene().name.EndsWith("De");
         string langName = isGerman ? "German" : "English";
 
-        // Gemini'ye dil bilgisini prompt içinde veriyoruz
         string promptText = puanlamaCumleIcinMi
             ? $"Listen to this {langName} audio. Transcribe exactly the sentence spoken. Do not auto-correct."
             : $"Listen to this {langName} audio. Transcribe exactly the single word spoken. Do not auto-correct.";
@@ -127,22 +124,30 @@ public class SpeechManager : MonoBehaviour
                 string hedef = puanlamaCumleIcinMi ? aktifCumle : aktifKelime;
                 int score = CalculateScore(hedef, spokenText);
 
-                // --- VERÝTABANI KAYDI ---
+                ARObjectController[] tumObjeler = FindObjectsOfType<ARObjectController>();
+
+                foreach (ARObjectController obje in tumObjeler)
+                {
+                    if (obje.GetObjeAdi() == hedef.ToLower().Trim())
+                    {
+                        obje.SonucuDegerlendir(score);
+                        break;
+                    }
+                }
+
                 if (DatabaseManager.Instance != null)
                 {
                     string tur = puanlamaCumleIcinMi ? "Cumle" : "Kelime";
                     string aktifDil = isGerman ? "Almanca" : "Ingilizce";
-
-                    // Yeni eklediðimiz 4. parametre (aktifDil) ile kaydediyoruz
                     DatabaseManager.Instance.SkoruKaydet(hedef, score, tur, aktifDil);
                     DatabaseManager.Instance.LogTut($"telaffuz_{aktifDil}", score.ToString());
                 }
 
                 if (scoreText)
                 {
-                    if (score >= 75) { scoreText.text = $"HARÝKA! ({score})\n{spokenText}"; scoreText.color = Color.green; }
-                    else if (score >= 50) { scoreText.text = $"ÝYÝ ({score})\n{spokenText}"; scoreText.color = new Color(1f, 0.64f, 0f); }
-                    else { scoreText.text = $"OLMADI ({score})\nAlgýlanan: {spokenText}"; scoreText.color = Color.red; }
+                    if (score >= 75) { scoreText.text = $"HARÄ°KA! ({score})\n{spokenText}"; scoreText.color = Color.green; }
+                    else if (score >= 50) { scoreText.text = $"Ä°YÄ° ({score})\n{spokenText}"; scoreText.color = new Color(1f, 0.64f, 0f); }
+                    else { scoreText.text = $"OLMADI ({score})\nAlgÄ±lanan: {spokenText}"; scoreText.color = Color.red; }
                 }
             }
         }
@@ -170,7 +175,7 @@ public class SpeechManager : MonoBehaviour
             start += marker.Length; int end = json.IndexOf("\"", start);
             return json.Substring(start, end - start).Replace("\\n", "").Trim();
         }
-        catch { return "JSON Hatasý"; }
+        catch { return "JSON HatasÄ±"; }
     }
 
     int CalculateScore(string target, string received)

@@ -1,132 +1,170 @@
 using UnityEngine;
-using System.Collections; // Zıplama zamanlaması için gerekli
+using System.Collections;
 
 public class ARObjectController : MonoBehaviour
 {
     [Header("Hareket Ayarları")]
-    public float donusHizi = 100.0f;
-    public float buyutmeHizi = 2.0f;
-    public float minBoyut = 0.1f;    
-    public float maxBoyut = 5.0f;    
+    public float donusHizi = 0.2f;
+    public float buyutmeHizi = 0.005f;
+    public float minBoyut = 0.1f;
+    public float maxBoyut = 5f;
 
-    [Header("Tap (Tıklama) Ayarları")]
-    public float ziplamaGucu = 0.5f; // Ne kadar yükseğe zıplasın
+    [Header("Telaffuz Ayarları")]
+    public int gecmeNotu = 60;
+    public string objeAdi = "apple";
 
-    // Değişkenler
-    private Vector3 sonMousePozisyonu;
+    [Header("Tap Zıplama Ayarları")]
+    public float ziplamaGucu = 0.05f;
+
+    private Animator anim;
+
+    // Touch değişkenleri
+    private Vector2 oncekiTouchPozisyon;
     private bool surukleniyorMu = false;
-    
-    // Zıplama için gerekenler
+
+    // Zıplama
     private Vector3 baslangicPozisyonu;
     private bool efektOynuyorMu = false;
 
     void Start()
     {
-        // Objenin ilk konumunu hafızaya al (Zıplayıp buraya geri dönecek)
+        anim = GetComponent<Animator>();
+        objeAdi = objeAdi.ToLower().Trim();
         baslangicPozisyonu = transform.localPosition;
     }
 
     void Update()
     {
-        // --- 1. FREE ROTATE (HER YÖNE DÖNDÜRME) ---
-        if (Input.GetMouseButtonDown(0))
+        // --- 1 PARMAK ---
+        if (Input.touchCount == 1)
         {
-            sonMousePozisyonu = Input.mousePosition;
-            surukleniyorMu = false;
-        }
-        else if (Input.GetMouseButton(0))
-        {
-            Vector3 delta = Input.mousePosition - sonMousePozisyonu;
+            Touch touch = Input.GetTouch(0);
 
-            if (delta.magnitude > 2f) 
+            if (touch.phase == TouchPhase.Began)
             {
-                surukleniyorMu = true;
-                
-                float rotY = -delta.x * donusHizi * Time.deltaTime;
-                float rotX = delta.y * donusHizi * Time.deltaTime;
-
-                transform.Rotate(rotX, rotY, 0, Space.World);
+                oncekiTouchPozisyon = touch.position;
+                surukleniyorMu = false;
             }
-            
-            sonMousePozisyonu = Input.mousePosition;
+
+            else if (touch.phase == TouchPhase.Moved)
+            {
+                Vector2 delta = touch.position - oncekiTouchPozisyon;
+
+                if (delta.magnitude > 5f)
+                {
+                    surukleniyorMu = true;
+
+                    float rotY = -delta.x * donusHizi;
+                    float rotX = delta.y * donusHizi;
+
+                    transform.Rotate(rotX, rotY, 0, Space.World);
+
+                    oncekiTouchPozisyon = touch.position;
+                }
+            }
+
+            else if (touch.phase == TouchPhase.Ended)
+            {
+                // TAP → ZIPLAMA
+                if (!surukleniyorMu)
+                {
+                    Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                    RaycastHit hit;
+
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        if (hit.transform == transform || hit.transform.IsChildOf(transform))
+                        {
+                            if (!efektOynuyorMu)
+                            {
+                                StartCoroutine(ZiplamaEfekti());
+
+                                if (TTSManager.Instance != null)
+                                    TTSManager.Instance.Speak(objeAdi);
+                            }
+                        }
+                    }
+                }
+            }
         }
 
-        // --- 2. SCALE (BÜYÜTME) ---
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-        if (scroll != 0)
+        // --- 2 PARMAK → SCALE ---
+        if (Input.touchCount == 2)
         {
-            Vector3 yeniBoyut = transform.localScale + Vector3.one * scroll * buyutmeHizi;
+            Touch t0 = Input.GetTouch(0);
+            Touch t1 = Input.GetTouch(1);
 
+            Vector2 t0Prev = t0.position - t0.deltaPosition;
+            Vector2 t1Prev = t1.position - t1.deltaPosition;
+
+            float prevDist = Vector2.Distance(t0Prev, t1Prev);
+            float currDist = Vector2.Distance(t0.position, t1.position);
+
+            float fark = currDist - prevDist;
+
+            Vector3 yeniBoyut = transform.localScale + Vector3.one * fark * buyutmeHizi;
             yeniBoyut.x = Mathf.Clamp(yeniBoyut.x, minBoyut, maxBoyut);
             yeniBoyut.y = Mathf.Clamp(yeniBoyut.y, minBoyut, maxBoyut);
             yeniBoyut.z = Mathf.Clamp(yeniBoyut.z, minBoyut, maxBoyut);
 
             transform.localScale = yeniBoyut;
         }
-
-        // --- 3. TAP (TIKLAMA & ZIPLAMA) ---
-        if (Input.GetMouseButtonUp(0) && !surukleniyorMu)
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                // Tıklanan obje bu scriptin bağlı olduğu obje mi?
-                if (hit.transform == transform || hit.transform.IsChildOf(transform))
-                {
-                    // Eğer şu an zaten zıplamıyorsa -> Zıplat
-                    if (!efektOynuyorMu) StartCoroutine(ZiplamaEfekti());
-                    
-                    // Sesi Oku
-                    TetikleSes();
-                }
-            }
-        }
     }
 
-    // --- ZIPLAMA ANİMASYONU (KOD İLE) ---
+    // 🔥 SpeechManager burayı çağırır
+    public void SonucuDegerlendir(int puan)
+    {
+        if (puan >= gecmeNotu)
+            Basarili();
+        else
+            Basarisiz();
+    }
+
+    void Basarili()
+    {
+        if (anim != null)
+            anim.SetTrigger("Don");
+
+        if (TTSManager.Instance != null)
+            TTSManager.Instance.Speak("Excellent! " + objeAdi);
+    }
+
+    void Basarisiz()
+    {
+        if (TTSManager.Instance != null)
+            TTSManager.Instance.Speak("Try again.");
+    }
+
     IEnumerator ZiplamaEfekti()
     {
         efektOynuyorMu = true;
-        
-        float sure = 0.2f; // Çıkış süresi
-        float gecenSure = 0;
-        
-        // Mevcut pozisyonu referans al (kullanıcı hareket ettirmiş olabilir diye güncellemiyoruz, local kullanıyoruz)
-        // Ancak zıplama her zaman 'yukarı' olsun diye localPosition.y'yi artırıyoruz.
-        Vector3 hedefYukseklik = baslangicPozisyonu + Vector3.up * ziplamaGucu;
 
-        // Yukarı Çık
-        while (gecenSure < sure)
+        float sure = 0.15f;
+        float gecen = 0f;
+
+        Vector3 hedef = baslangicPozisyonu + Vector3.up * ziplamaGucu;
+
+        while (gecen < sure)
         {
-            transform.localPosition = Vector3.Lerp(baslangicPozisyonu, hedefYukseklik, (gecenSure / sure));
-            gecenSure += Time.deltaTime;
+            transform.localPosition = Vector3.Lerp(baslangicPozisyonu, hedef, gecen / sure);
+            gecen += Time.deltaTime;
             yield return null;
         }
 
-        // Aşağı İn
-        gecenSure = 0;
-        while (gecenSure < sure)
+        gecen = 0f;
+        while (gecen < sure)
         {
-            transform.localPosition = Vector3.Lerp(hedefYukseklik, baslangicPozisyonu, (gecenSure / sure));
-            gecenSure += Time.deltaTime;
+            transform.localPosition = Vector3.Lerp(hedef, baslangicPozisyonu, gecen / sure);
+            gecen += Time.deltaTime;
             yield return null;
         }
-        
-        transform.localPosition = baslangicPozisyonu; // Tam yerine oturt
+
+        transform.localPosition = baslangicPozisyonu;
         efektOynuyorMu = false;
     }
 
-    void TetikleSes()
+    public string GetObjeAdi()
     {
-        if (TTSManager.Instance != null)
-        {
-            var speakScript = GetComponentInParent<SpeakOnTarget>();
-            if (speakScript != null)
-            {
-                TTSManager.Instance.Speak(speakScript.kelime);
-            }
-        }
+        return objeAdi;
     }
 }
