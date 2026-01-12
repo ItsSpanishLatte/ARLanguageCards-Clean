@@ -22,4 +22,9 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("ScoreboardScene");
     }
+
+    public void AcQuiz()
+    {
+        SceneManager.LoadScene("QuizScene");
+    }
 }
