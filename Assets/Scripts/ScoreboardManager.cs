@@ -34,13 +34,10 @@ public class ScoreboardManager : MonoBehaviour
 
         string userId = auth.CurrentUser.UserId;
 
-        // --- DÝL BELÝRLEME ---
-        // Sahne ismi "De" ile bitiyorsa Almanca verilerini, bitmiyorsa Ýngilizceyi getirir.
         string aktifDil = SceneManager.GetActiveScene().name.EndsWith("De") ? "Almanca" : "Ingilizce";
 
         if (durumYazisi != null) durumYazisi.text = (aktifDil == "Almanca") ? "Laden..." : "Loading...";
 
-        // Firestore Sorgusu: Sadece ilgili dili getir (WhereEqualTo filtresi eklendi)
         db.Collection("Users").Document(userId).Collection("Gecmis")
             .WhereEqualTo("dil", aktifDil)
             .OrderByDescending("tarih")
@@ -52,7 +49,6 @@ public class ScoreboardManager : MonoBehaviour
                     return;
                 }
 
-                // Listeleri temizle
                 foreach (Transform child in kelimeContent) Destroy(child.gameObject);
                 foreach (Transform child in cumleContent) Destroy(child.gameObject);
 
@@ -76,7 +72,6 @@ public class ScoreboardManager : MonoBehaviour
                         string puan = veri["puan"].ToString();
                         string tur = veri.ContainsKey("tur") ? veri["tur"].ToString() : "Kelime";
 
-                        // Türüne göre uygun listeye ekle
                         Transform hedefKutu = (tur == "Cumle") ? cumleContent : kelimeContent;
                         GameObject yeniSatir = Instantiate(satirPrefab, hedefKutu);
                         yeniSatir.GetComponent<TextMeshProUGUI>().text = $"{hedef} : {puan}";
@@ -87,7 +82,6 @@ public class ScoreboardManager : MonoBehaviour
 
     public void AnaMenuyeDon()
     {
-        // Almanca profilinden Almanca ana menüye, diðerinden normal menüye döner.
         string sahneAdi = SceneManager.GetActiveScene().name.EndsWith("De") ? "MainMenuDe" : "MainMenu";
         SceneManager.LoadScene(sahneAdi);
     }

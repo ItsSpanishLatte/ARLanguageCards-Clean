@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections; // Zıplama zamanlaması için gerekli
+using System.Collections; 
 
 public class ARObjectController : MonoBehaviour
 {
@@ -10,25 +10,22 @@ public class ARObjectController : MonoBehaviour
     public float maxBoyut = 5.0f;    
 
     [Header("Tap (Tıklama) Ayarları")]
-    public float ziplamaGucu = 0.5f; // Ne kadar yükseğe zıplasın
+    public float ziplamaGucu = 0.5f;
 
-    // Değişkenler
     private Vector3 sonMousePozisyonu;
     private bool surukleniyorMu = false;
     
-    // Zıplama için gerekenler
     private Vector3 baslangicPozisyonu;
     private bool efektOynuyorMu = false;
 
     void Start()
     {
-        // Objenin ilk konumunu hafızaya al (Zıplayıp buraya geri dönecek)
         baslangicPozisyonu = transform.localPosition;
     }
 
     void Update()
     {
-        // --- 1. FREE ROTATE (HER YÖNE DÖNDÜRME) ---
+        //FREE ROTATE 
         if (Input.GetMouseButtonDown(0))
         {
             sonMousePozisyonu = Input.mousePosition;
@@ -51,7 +48,7 @@ public class ARObjectController : MonoBehaviour
             sonMousePozisyonu = Input.mousePosition;
         }
 
-        // --- 2. SCALE (BÜYÜTME) ---
+        //SCALE
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (scroll != 0)
         {
@@ -64,7 +61,7 @@ public class ARObjectController : MonoBehaviour
             transform.localScale = yeniBoyut;
         }
 
-        // --- 3. TAP (TIKLAMA & ZIPLAMA) ---
+        //TAP
         if (Input.GetMouseButtonUp(0) && !surukleniyorMu)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -72,20 +69,15 @@ public class ARObjectController : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                // Tıklanan obje bu scriptin bağlı olduğu obje mi?
                 if (hit.transform == transform || hit.transform.IsChildOf(transform))
                 {
-                    // Eğer şu an zaten zıplamıyorsa -> Zıplat
                     if (!efektOynuyorMu) StartCoroutine(ZiplamaEfekti());
-                    
-                    // Sesi Oku
-                    TetikleSes();
+                                        TetikleSes();
                 }
             }
         }
     }
 
-    // --- ZIPLAMA ANİMASYONU (KOD İLE) ---
     IEnumerator ZiplamaEfekti()
     {
         efektOynuyorMu = true;
@@ -93,8 +85,6 @@ public class ARObjectController : MonoBehaviour
         float sure = 0.2f; // Çıkış süresi
         float gecenSure = 0;
         
-        // Mevcut pozisyonu referans al (kullanıcı hareket ettirmiş olabilir diye güncellemiyoruz, local kullanıyoruz)
-        // Ancak zıplama her zaman 'yukarı' olsun diye localPosition.y'yi artırıyoruz.
         Vector3 hedefYukseklik = baslangicPozisyonu + Vector3.up * ziplamaGucu;
 
         // Yukarı Çık
@@ -114,7 +104,7 @@ public class ARObjectController : MonoBehaviour
             yield return null;
         }
         
-        transform.localPosition = baslangicPozisyonu; // Tam yerine oturt
+        transform.localPosition = baslangicPozisyonu;
         efektOynuyorMu = false;
     }
 

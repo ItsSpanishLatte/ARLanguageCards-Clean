@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class AuthManager : MonoBehaviour
 {
-    public static AuthManager Instance; // Diðer sahnelerden eriþim için eklendi
+    public static AuthManager Instance; 
 
     [Header("GÝRÝÞ EKRANI (Ana Sahne)")]
     public InputField girisEmailInput;
@@ -23,12 +23,10 @@ public class AuthManager : MonoBehaviour
 
     private FirebaseAuth auth;
 
-    // Dil seçimi kontrolü
     private bool isGermanSelected = false;
 
     private void Awake()
     {
-        // Singleton yapýsý: Objeyi sahneler arasý korur
         if (Instance == null)
         {
             Instance = this;
@@ -45,16 +43,14 @@ public class AuthManager : MonoBehaviour
         isGermanSelected = false;
     }
 
-    // --- YENÝ EKLENEN ÇIKIÞ YAP FONKSÝYONU ---
     public void CikisYap()
     {
         if (auth != null)
         {
-            auth.SignOut(); // Firebase oturumunu kapat
+            auth.SignOut(); 
             Debug.Log("Oturum kapatýldý.");
         }
 
-        // Giriþ sahnesine dön (Sahne adýnýn LoginScene olduðundan emin ol)
         SceneManager.LoadScene("LoginScene");
     }
 

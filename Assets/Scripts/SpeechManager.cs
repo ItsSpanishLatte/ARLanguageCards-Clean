@@ -105,8 +105,6 @@ public class SpeechManager : MonoBehaviour
         string url = $"{API_URL}?key={geminiApiKey}";
         string base64Audio = Convert.ToBase64String(audioData);
 
-        // --- GARANTÝ DÝL KONTROLÜ ---
-        // Sahne ismi "FruchteScene" olsa bile ToLower() ve Contains sayesinde yakalar.
         string sName = SceneManager.GetActiveScene().name.ToLower();
         bool isGerman = sName.EndsWith("de") || sName.Contains("frucht") || sName.Contains("tier") || sName.Contains("fahrzeug");
 
@@ -127,7 +125,6 @@ public class SpeechManager : MonoBehaviour
             request.SetRequestHeader("Content-Type", "application/json");
             request.certificateHandler = new BypassCertificate();
 
-            // Gönderiliyor'da takýlmamasý için zaman aþýmý
             request.timeout = 15;
 
             yield return request.SendWebRequest();
@@ -143,7 +140,6 @@ public class SpeechManager : MonoBehaviour
                 string hedef = puanlamaCumleIcinMi ? aktifCumle : aktifKelime;
                 int score = CalculateScore(hedef, spokenText);
 
-                // --- DOÐRU DÝL ETÝKETÝYLE KAYIT ---
                 if (DatabaseManager.Instance != null)
                 {
                     string tur = puanlamaCumleIcinMi ? "Cumle" : "Kelime";

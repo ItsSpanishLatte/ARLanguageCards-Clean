@@ -2128,7 +2128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3472c9f159141446aa369a5119dc837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  geminiApiKey: AIzaSyCOh5EPcZgvtYML_OwiF7ihnTxvy34hktQ
+  geminiApiKey: AIzaSyAX0A_rO0dd0jrI729ZJFyUQKhiPsyrbrs
   scoreText: {fileID: 1307723447}
   buttonLabel: {fileID: 0}
   buttonLabelCumle: {fileID: 0}
@@ -2715,7 +2715,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b99dec92e4dc224e843c6802bcc58b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuSahneAdi: MainMenu
 --- !u!114 &1357935257
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,9 +8,8 @@ public class TTSManager : MonoBehaviour
     public AudioSource audioSource;
 
     [Header("Dil Ayarı (en=İng, de=Alm, tr=Tr)")]
-    public string dilKodu = "en"; // Burayı Inspector'dan "de" yaparsan Almanca okur!
+    public string dilKodu = "en"; 
 
-    // HAFIZA
     private string hafizaKelime = "";
     private string hafizaCumle = "";
 
@@ -43,7 +42,6 @@ public class TTSManager : MonoBehaviour
 
     IEnumerator SesIndirVeCal(string text)
     {
-        // URL'nin sonundaki "tl=" kısmına dilKodu değişkenini ekledik
         string url = "https://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q=" + text + "&tl=" + dilKodu;
         
         using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG))
