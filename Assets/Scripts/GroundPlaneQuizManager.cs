@@ -102,13 +102,10 @@ public class GroundPlaneQuizManager : MonoBehaviour
 
     public void SoruSesiniDinle()
     {
-        // 1. Cevap belli mi kontrol et
         if (string.IsNullOrEmpty(dogruCevapAdi)) return;
 
-        // 2. Senin TTSManager sahnede var mı?
         if (TTSManager.Instance != null)
         {
-            // Senin mevcut fonksiyonunu çağırıyoruz
             TTSManager.Instance.Speak(dogruCevapAdi); 
         }
         else

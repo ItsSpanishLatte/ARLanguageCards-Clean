@@ -13,7 +13,6 @@ public class DatabaseManager : MonoBehaviour
 
     void Awake()
     {
-        // Sahne deðiþse bile bu script yok olmasýn
         if (Instance == null)
         {
             Instance = this;
@@ -27,35 +26,30 @@ public class DatabaseManager : MonoBehaviour
 
     void Start()
     {
-        // Firebase'i baþlat
         db = FirebaseFirestore.DefaultInstance;
         auth = FirebaseAuth.DefaultInstance;
         FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
     }
 
-    // --- SKOR KAYDETME (GÜNCELLENDÝ: DÝL PARAMETRESÝ EKLENDÝ) ---
     public void SkoruKaydet(string kelime, int puan, string tur, string dil)
     {
         if (auth.CurrentUser == null) return; // Giriþ yapmamýþsa kaydetme
 
         string userId = auth.CurrentUser.UserId;
 
-        // Veritabaný paketini hazýrla
         Dictionary<string, object> veri = new Dictionary<string, object>
         {
             { "hedef", kelime },
             { "puan", puan },
             { "tur", tur }, // "Kelime" veya "Cümle"
-            { "dil", dil }, // "Ingilizce" veya "Almanca" etiketini buraya ekliyoruz
+            { "dil", dil }, // "Ingilizce" veya "Almanca" etiketi
             { "tarih", FieldValue.ServerTimestamp }
         };
 
-        // Users -> (UserID) -> Gecmis -> (RastgeleID) yoluna ekle
         db.Collection("Users").Document(userId).Collection("Gecmis").AddAsync(veri);
         Debug.Log($"Skor ({dil}) Veritabanýna Gönderildi!");
     }
 
-    // --- ANALÝTÝK LOGLAMA ---
     public void LogTut(string olayAdi, string deger)
     {
         FirebaseAnalytics.LogEvent(olayAdi, new Parameter("deger", deger));

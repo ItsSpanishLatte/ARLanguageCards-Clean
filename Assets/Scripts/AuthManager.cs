@@ -8,21 +8,31 @@ using UnityEngine.SceneManagement;
 
 public class AuthManager : MonoBehaviour
 {
+    public static AuthManager Instance; 
+
     [Header("GÝRÝÞ EKRANI (Ana Sahne)")]
     public InputField girisEmailInput;
     public InputField girisPasswordInput;
-    public TextMeshProUGUI bildirimText; // Giriþ ekranýndaki mesajlar
+    public TextMeshProUGUI bildirimText;
 
     [Header("KAYIT PANELÝ (Pop-up)")]
     public GameObject kayitPaneli;
     public InputField kayitEmailInput;
     public InputField kayitPasswordInput;
-    public TextMeshProUGUI kayitBildirimText; // Kayýt paneli mesajlarý
+    public TextMeshProUGUI kayitBildirimText;
 
     private FirebaseAuth auth;
 
-    // Dil seçimi kontrolü (Sadece Almanca butonu için)
     private bool isGermanSelected = false;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -30,24 +40,33 @@ public class AuthManager : MonoBehaviour
         if (kayitPaneli != null)
             kayitPaneli.SetActive(false);
 
-        // Baþlangýçta dil her zaman Ýngilizce (varsayýlan)
         isGermanSelected = false;
     }
 
-    // SAHNEDEKÝ ALMANCA BUTONUNA BU FONKSÝYONU ATAYACAKSIN
+    public void CikisYap()
+    {
+        if (auth != null)
+        {
+            auth.SignOut(); 
+            Debug.Log("Oturum kapatýldý.");
+        }
+
+        SceneManager.LoadScene("LoginScene");
+    }
+
     public void AlmancaSec()
     {
         isGermanSelected = true;
         if (bildirimText != null)
         {
-            bildirimText.text = "Modus: Deutsch ausgewählt"; // Seçildiðini kullanýcýya bildir
+            bildirimText.text = "Modus: Deutsch ausgewählt";
             bildirimText.color = Color.cyan;
         }
     }
 
     public void KayitPaneliniAc()
     {
-        kayitPaneli.SetActive(true);
+        if (kayitPaneli != null) kayitPaneli.SetActive(true);
         if (kayitBildirimText != null) kayitBildirimText.text = "";
         if (bildirimText != null) bildirimText.text = "";
     }
@@ -82,7 +101,7 @@ public class AuthManager : MonoBehaviour
         {
             if (bildirimText != null) bildirimText.text = "Kayýt Baþarýlý!";
             KayitPaneliniKapat();
-            girisEmailInput.text = email;
+            if (girisEmailInput != null) girisEmailInput.text = email;
         }
     }
 
@@ -115,15 +134,10 @@ public class AuthManager : MonoBehaviour
             if (bildirimText != null) bildirimText.text = "Hoþ geldiniz!";
             yield return new WaitForSeconds(1.0f);
 
-            // Mantýk: Butona týklandýysa Almanca Menü, týklanmadýysa Ýngilizce Menü
             if (isGermanSelected)
-            {
                 SceneManager.LoadScene("MainMenuDe");
-            }
             else
-            {
                 SceneManager.LoadScene("MainMenu");
-            }
         }
     }
 

@@ -5,12 +5,19 @@ public class MenuDonus : MonoBehaviour
 {
     public void MenuyeDon()
     {
-        // SpeechManager'ý temizle
-        if (SpeechManager.Instance != null) Destroy(SpeechManager.Instance.gameObject);
+        if (SpeechManager.Instance != null)
+        {
+            Destroy(SpeechManager.Instance.gameObject);
+        }
 
-        // Þu anki sahne "De" ile bitiyorsa Almanca ana menüye, bitmiyorsa normal menüye dön
-        string hedefSahne = SceneManager.GetActiveScene().name.EndsWith("De") ? "MainMenuDe" : "MainMenu";
+        string currentScene = SceneManager.GetActiveScene().name;
+        bool isGerman = currentScene.EndsWith("De") ||
+                        currentScene.Contains("Frucht") ||
+                        currentScene.Contains("Tier") ||
+                        currentScene.Contains("Fahrzeug");
 
-        SceneManager.LoadScene(hedefSahne);
+        string hedefMenü = isGerman ? "MainMenuDe" : "MainMenu";
+
+        SceneManager.LoadScene(hedefMenü);
     }
 }
