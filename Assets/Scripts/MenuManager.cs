@@ -3,28 +3,44 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    // Yardýmcý fonksiyon: Þu an Almanca menüde miyiz?
+    private bool IsGermanMenu()
+    {
+        return SceneManager.GetActiveScene().name.EndsWith("De");
+    }
+
     public void FruitsSahnesiniAc()
     {
-        SceneManager.LoadScene("FruitsScene");
+        // Almanca menüdeyse FruchteSceneDe, deðilse FruitsScene açýlýr
+        string sceneName = IsGermanMenu() ? "FruchteScene" : "FruitsScene";
+        SceneManager.LoadScene(sceneName);
     }
 
     public void AnimalsSahnesiniAc()
     {
-        SceneManager.LoadScene("AnimalsScene");
+        // Almanca menüdeyse TiereSceneDe, deðilse AnimalsScene açýlýr
+        string sceneName = IsGermanMenu() ? "TiereScene" : "AnimalsScene";
+        SceneManager.LoadScene(sceneName);
     }
 
     public void VehiclesSahnesiniAc()
     {
-        SceneManager.LoadScene("VehiclesScene");
+        // Almanca menüdeyse FahrzeugeSceneDe (veya senin isimlendirmenle VehiclesScene_DE), deðilse VehiclesScene açýlýr
+        string sceneName = IsGermanMenu() ? "FahrzeugeScene" : "VehiclesScene";
+        SceneManager.LoadScene(sceneName);
     }
 
     public void AcProfil()
     {
-        SceneManager.LoadScene("ScoreboardScene");
+        // Almanca menüdeyse ScoreboardSceneDe, deðilse ScoreboardScene açýlýr
+        string sceneName = IsGermanMenu() ? "ScoreboardSceneDe" : "ScoreboardScene";
+        SceneManager.LoadScene(sceneName);
     }
 
     public void AcQuiz()
     {
-        SceneManager.LoadScene("QuizScene");
+        // Quiz sahnesi için de ayný mantýk (varsa QuizSceneDe yoksa varsayýlan)
+        string sceneName = IsGermanMenu() ? "QuizSceneDe" : "QuizScene";
+        SceneManager.LoadScene(sceneName);
     }
 }

@@ -1,14 +1,16 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 
 public class MenuDonus : MonoBehaviour
 {
-    public string menuSahneAdi = "MainMenu";
-
     public void MenuyeDon()
     {
+        // SpeechManager'ý temizle
         if (SpeechManager.Instance != null) Destroy(SpeechManager.Instance.gameObject);
 
-        SceneManager.LoadScene(menuSahneAdi);
+        // Þu anki sahne "De" ile bitiyorsa Almanca ana menüye, bitmiyorsa normal menüye dön
+        string hedefSahne = SceneManager.GetActiveScene().name.EndsWith("De") ? "MainMenuDe" : "MainMenu";
+
+        SceneManager.LoadScene(hedefSahne);
     }
 }

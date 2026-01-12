@@ -6,6 +6,7 @@ using System.Text;
 using System.IO;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; // Sahne kontrolü için eklendi
 
 public class SpeechManager : MonoBehaviour
 {
@@ -21,11 +22,8 @@ public class SpeechManager : MonoBehaviour
     public TextMeshProUGUI buttonLabel;
     public TextMeshProUGUI buttonLabelCumle;
 
-    // --- HAFIZA ---
     private string aktifKelime = "";
     private string aktifCumle = "";
-
-    // MOD SEÇÝMÝ
     private bool puanlamaCumleIcinMi = false;
 
     private AudioClip recordingClip;
@@ -52,15 +50,11 @@ public class SpeechManager : MonoBehaviour
 
     public void HedefGuncelle(string kelime, string cumle)
     {
-        // Gelen verileri temizle ve kaydet
         aktifKelime = kelime != null ? kelime.Trim() : "";
         aktifCumle = cumle != null ? cumle.Trim() : "";
-
         if (scoreText) scoreText.text = "Kart: " + aktifKelime;
-        Debug.Log($"Kart: {aktifKelime} | Cümle: {aktifCumle}");
     }
 
-    // --- BUTON FONKSÝYONLARI ---
     public void ButonKelimeOku() { if (!string.IsNullOrEmpty(aktifKelime) && TTSManager.Instance) TTSManager.Instance.SadeceKelimeyiOku(); }
     public void ButonCumleOku() { if (!string.IsNullOrEmpty(aktifCumle) && TTSManager.Instance) TTSManager.Instance.SadeceCumleyiOku(); }
 
@@ -85,9 +79,7 @@ public class SpeechManager : MonoBehaviour
             if (string.IsNullOrEmpty(deviceName)) return;
             isRecording = true;
             recordingClip = Microphone.Start(deviceName, false, 5, 44100);
-
-            if (scoreText) scoreText.text = "Dinliyorum...";
-            if (scoreText) scoreText.color = Color.yellow;
+            if (scoreText) { scoreText.text = "Dinliyorum..."; scoreText.color = Color.yellow; }
             if (labelToChange) labelToChange.text = "BÝTÝR";
         }
         else
@@ -95,10 +87,8 @@ public class SpeechManager : MonoBehaviour
             isRecording = false;
             int position = Microphone.GetPosition(deviceName);
             Microphone.End(deviceName);
-
             if (scoreText) scoreText.text = "Gönderiliyor...";
             if (labelToChange) labelToChange.text = puanlamaCumleIcinMi ? "CÜMLE PUANLA" : "KELÝME PUANLA";
-
             byte[] wavData = ConvertToWav(recordingClip, position);
             StartCoroutine(SendToGemini(wavData));
         }
@@ -109,9 +99,15 @@ public class SpeechManager : MonoBehaviour
         string url = $"{API_URL}?key={geminiApiKey}";
         string base64Audio = Convert.ToBase64String(audioData);
 
+        // --- DÝL KONTROLÜ ---
+        // Sahne ismi "De" ile bitiyorsa Almanca, bitmiyorsa Ýngilizce kabul eder.
+        bool isGerman = SceneManager.GetActiveScene().name.EndsWith("De");
+        string langName = isGerman ? "German" : "English";
+
+        // Gemini'ye dil bilgisini prompt içinde veriyoruz
         string promptText = puanlamaCumleIcinMi
-            ? "Listen to this audio. Transcribe exactly the sentence spoken. Do not auto-correct."
-            : "Listen to this audio. Transcribe exactly the single word spoken. Do not auto-correct.";
+            ? $"Listen to this {langName} audio. Transcribe exactly the sentence spoken. Do not auto-correct."
+            : $"Listen to this {langName} audio. Transcribe exactly the single word spoken. Do not auto-correct.";
 
         string jsonBody = $@"{{""contents"":[{{""parts"":[{{""text"":""{promptText}""}},{{""inline_data"":{{""mime_type"":""audio/wav"",""data"":""{base64Audio}""}}}}]}}]}}";
 
@@ -125,35 +121,22 @@ public class SpeechManager : MonoBehaviour
 
             yield return request.SendWebRequest();
 
-            if (request.result != UnityWebRequest.Result.Success)
+            if (request.result == UnityWebRequest.Result.Success)
             {
-                string hataMesaji = $"HATA KODU: {request.responseCode}\n{request.error}";
-                if (scoreText) scoreText.text = hataMesaji;
-                scoreText.color = Color.red;
-                Debug.LogError("GEMINI HATASI: " + request.downloadHandler.text);
-            }
-            else
-            {
-                string responseText = request.downloadHandler.text;
-                string spokenText = ExtractTextFromJson(responseText);
-
+                string spokenText = ExtractTextFromJson(request.downloadHandler.text);
                 string hedef = puanlamaCumleIcinMi ? aktifCumle : aktifKelime;
                 int score = CalculateScore(hedef, spokenText);
 
-                // -----------------------------------------------------------
-                //  VERÝTABANI VE ANALÝTÝK KAYDI BURADA YAPILIYOR
-                // -----------------------------------------------------------
+                // --- VERÝTABANI KAYDI ---
                 if (DatabaseManager.Instance != null)
                 {
                     string tur = puanlamaCumleIcinMi ? "Cumle" : "Kelime";
+                    string aktifDil = isGerman ? "Almanca" : "Ingilizce";
 
-                    // 1. Veritabanýna Skoru Kaydet (Firestore)
-                    DatabaseManager.Instance.SkoruKaydet(hedef, score, tur);
-
-                    // 2. Analitik Log Tut (Firebase Analytics)
-                    DatabaseManager.Instance.LogTut("telaffuz_denemesi", score.ToString());
+                    // Yeni eklediðimiz 4. parametre (aktifDil) ile kaydediyoruz
+                    DatabaseManager.Instance.SkoruKaydet(hedef, score, tur, aktifDil);
+                    DatabaseManager.Instance.LogTut($"telaffuz_{aktifDil}", score.ToString());
                 }
-                // -----------------------------------------------------------
 
                 if (scoreText)
                 {

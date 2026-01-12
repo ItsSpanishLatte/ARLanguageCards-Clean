@@ -33,8 +33,8 @@ public class DatabaseManager : MonoBehaviour
         FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
     }
 
-    // --- SKOR KAYDETME ---
-    public void SkoruKaydet(string kelime, int puan, string tur)
+    // --- SKOR KAYDETME (GÜNCELLENDÝ: DÝL PARAMETRESÝ EKLENDÝ) ---
+    public void SkoruKaydet(string kelime, int puan, string tur, string dil)
     {
         if (auth.CurrentUser == null) return; // Giriþ yapmamýþsa kaydetme
 
@@ -46,12 +46,13 @@ public class DatabaseManager : MonoBehaviour
             { "hedef", kelime },
             { "puan", puan },
             { "tur", tur }, // "Kelime" veya "Cümle"
+            { "dil", dil }, // "Ingilizce" veya "Almanca" etiketini buraya ekliyoruz
             { "tarih", FieldValue.ServerTimestamp }
         };
 
         // Users -> (UserID) -> Gecmis -> (RastgeleID) yoluna ekle
         db.Collection("Users").Document(userId).Collection("Gecmis").AddAsync(veri);
-        Debug.Log("Skor Veritabanýna Gönderildi!");
+        Debug.Log($"Skor ({dil}) Veritabanýna Gönderildi!");
     }
 
     // --- ANALÝTÝK LOGLAMA ---
