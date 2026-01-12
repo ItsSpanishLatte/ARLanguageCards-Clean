@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/ScoreboardScene.unity
     guid: 52254eae6e45b9f46b7f8e3fde624636
   - enabled: 1
+    path: Assets/Scenes/ScoreboardSceneDe.unity
+    guid: 8a576006499a2074a97704205be907b8
+  - enabled: 1
     path: Assets/Scenes/QuizScene.unity
     guid: 965e33eed196ec749bde7af25b5f66c6
   - enabled: 1

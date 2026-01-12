@@ -695,7 +695,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 363874210}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1460349300}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: CikisYap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &363874210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1099,7 +1111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b99dec92e4dc224e843c6802bcc58b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuSahneAdi: MainMenu
 --- !u!114 &483305087
 MonoBehaviour:
   m_ObjectHideFlags: 0

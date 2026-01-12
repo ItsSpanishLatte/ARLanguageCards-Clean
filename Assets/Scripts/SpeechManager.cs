@@ -6,7 +6,7 @@ using System.Text;
 using System.IO;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; // Sahne kontrolü için eklendi
+using UnityEngine.SceneManagement;
 
 public class SpeechManager : MonoBehaviour
 {
@@ -96,15 +96,23 @@ public class SpeechManager : MonoBehaviour
 
     IEnumerator SendToGemini(byte[] audioData)
     {
+        if (string.IsNullOrEmpty(geminiApiKey) || geminiApiKey == "BURAYA_API_KEY_YAZIN")
+        {
+            if (scoreText) scoreText.text = "Hata: API Key Eksik!";
+            yield break;
+        }
+
         string url = $"{API_URL}?key={geminiApiKey}";
         string base64Audio = Convert.ToBase64String(audioData);
 
-        // --- DÝL KONTROLÜ ---
-        // Sahne ismi "De" ile bitiyorsa Almanca, bitmiyorsa Ýngilizce kabul eder.
-        bool isGerman = SceneManager.GetActiveScene().name.EndsWith("De");
-        string langName = isGerman ? "German" : "English";
+        // --- GARANTÝ DÝL KONTROLÜ ---
+        // Sahne ismi "FruchteScene" olsa bile ToLower() ve Contains sayesinde yakalar.
+        string sName = SceneManager.GetActiveScene().name.ToLower();
+        bool isGerman = sName.EndsWith("de") || sName.Contains("frucht") || sName.Contains("tier") || sName.Contains("fahrzeug");
 
-        // Gemini'ye dil bilgisini prompt içinde veriyoruz
+        string langName = isGerman ? "German" : "English";
+        string aktifDil = isGerman ? "Almanca" : "Ingilizce";
+
         string promptText = puanlamaCumleIcinMi
             ? $"Listen to this {langName} audio. Transcribe exactly the sentence spoken. Do not auto-correct."
             : $"Listen to this {langName} audio. Transcribe exactly the single word spoken. Do not auto-correct.";
@@ -119,23 +127,27 @@ public class SpeechManager : MonoBehaviour
             request.SetRequestHeader("Content-Type", "application/json");
             request.certificateHandler = new BypassCertificate();
 
+            // Gönderiliyor'da takýlmamasý için zaman aþýmý
+            request.timeout = 15;
+
             yield return request.SendWebRequest();
 
-            if (request.result == UnityWebRequest.Result.Success)
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError($"Gemini Hatasý: {request.error}");
+                if (scoreText) { scoreText.text = "Baðlantý Hatasý!"; scoreText.color = Color.red; }
+            }
+            else
             {
                 string spokenText = ExtractTextFromJson(request.downloadHandler.text);
                 string hedef = puanlamaCumleIcinMi ? aktifCumle : aktifKelime;
                 int score = CalculateScore(hedef, spokenText);
 
-                // --- VERÝTABANI KAYDI ---
+                // --- DOÐRU DÝL ETÝKETÝYLE KAYIT ---
                 if (DatabaseManager.Instance != null)
                 {
                     string tur = puanlamaCumleIcinMi ? "Cumle" : "Kelime";
-                    string aktifDil = isGerman ? "Almanca" : "Ingilizce";
-
-                    // Yeni eklediðimiz 4. parametre (aktifDil) ile kaydediyoruz
                     DatabaseManager.Instance.SkoruKaydet(hedef, score, tur, aktifDil);
-                    DatabaseManager.Instance.LogTut($"telaffuz_{aktifDil}", score.ToString());
                 }
 
                 if (scoreText)
@@ -168,6 +180,7 @@ public class SpeechManager : MonoBehaviour
             string marker = "\"text\": \""; int start = json.IndexOf(marker);
             if (start == -1) return "???";
             start += marker.Length; int end = json.IndexOf("\"", start);
+            if (end == -1) return "???";
             return json.Substring(start, end - start).Replace("\\n", "").Trim();
         }
         catch { return "JSON Hatasý"; }
