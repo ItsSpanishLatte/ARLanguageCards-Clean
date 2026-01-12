@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/QuizScene.unity
     guid: 965e33eed196ec749bde7af25b5f66c6
+  - enabled: 1
+    path: Assets/Scenes/FruchteScene.unity
+    guid: e31305bacf9af954297d555174735fb1
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 08265006ce467044b9c14c659abf7a19, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 64147aebfd1409345ae2fc65a3ceb3e4, type: 2}

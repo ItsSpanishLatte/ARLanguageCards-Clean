@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="10_dieananas" size="1.000000 0.701172" />
+    <ImageTarget name="9_diekiwi" size="1.000000 0.701172" />
+    <ImageTarget name="8_kirsche" size="1.000000 0.701172" />
+    <ImageTarget name="7_wassermelone" size="1.000000 0.701172" />
+    <ImageTarget name="6_birne" size="1.000000 0.701172" />
+    <ImageTarget name="5_trauben" size="1.000000 0.701172" />
+    <ImageTarget name="4_erdbeere" size="1.000000 0.701172" />
+    <ImageTarget name="3_orangee" size="1.000000 0.701172" />
+    <ImageTarget name="2_banane" size="1.000000 0.701172" />
+    <ImageTarget name="1_apfel" size="1.000000 0.701172" />
+  </Tracking>
+</QCARConfig>
