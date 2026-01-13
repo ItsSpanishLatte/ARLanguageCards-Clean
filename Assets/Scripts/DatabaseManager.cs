@@ -33,7 +33,7 @@ public class DatabaseManager : MonoBehaviour
 
     public void SkoruKaydet(string kelime, int puan, string tur, string dil)
     {
-        if (auth.CurrentUser == null) return; // Giriş yapmamışsa kaydetme
+        if (auth.CurrentUser == null) return; // Giriï¿½ yapmamï¿½ï¿½sa kaydetme
 
         string userId = auth.CurrentUser.UserId;
 
@@ -41,18 +41,18 @@ public class DatabaseManager : MonoBehaviour
         {
             { "hedef", kelime },
             { "puan", puan },
-            { "tur", tur }, // "Kelime" veya "Cümle"
+            { "tur", tur }, // "Kelime" veya "Cï¿½mle"
             { "dil", dil }, // "Ingilizce" veya "Almanca" etiketi
             { "tarih", FieldValue.ServerTimestamp }
         };
 
         db.Collection("Users").Document(userId).Collection("Gecmis").AddAsync(veri);
-        Debug.Log($"Skor ({dil}) Veritabanına Gönderildi!");
+        Debug.Log($"Skor ({dil}) VeritabanÄ±na GÃ¶nderildi!");
     }
 
     public void LogTut(string olayAdi, string deger)
     {
         FirebaseAnalytics.LogEvent(olayAdi, new Parameter("deger", deger));
-        Debug.Log($"Analitik yollandı: {olayAdi} -> {deger}");
+        Debug.Log($"Analitik yollandÄ±: {olayAdi} -> {deger}");
     }
 }

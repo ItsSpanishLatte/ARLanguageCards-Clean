@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class ScoreboardManager : MonoBehaviour
 {
-    [Header("UI Baðlantýlarý")]
+    [Header("UI BaÄŸlantÄ±larï¿½")]
     public GameObject satirPrefab;
 
     [Header("Listeler")]
@@ -45,7 +45,7 @@ public class ScoreboardManager : MonoBehaviour
             {
                 if (task.IsFaulted || task.IsCanceled)
                 {
-                    Debug.LogError("Firebase Hatasý: " + task.Exception);
+                    Debug.LogError("Firebase HatasÄ±: " + task.Exception);
                     return;
                 }
 

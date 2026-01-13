@@ -10,12 +10,12 @@ public class AuthManager : MonoBehaviour
 {
     public static AuthManager Instance; 
 
-    [Header("G�R�� EKRANI (Ana Sahne)")]
+    [Header("GİRİŞ EKRANI (Ana Sahne)")]
     public InputField girisEmailInput;
     public InputField girisPasswordInput;
     public TextMeshProUGUI bildirimText;
 
-    [Header("KAYIT PANEL� (Pop-up)")]
+    [Header("KAYIT PANELİ (Pop-up)")]
     public GameObject kayitPaneli;
     public InputField kayitEmailInput;
     public InputField kayitPasswordInput;
@@ -48,7 +48,7 @@ public class AuthManager : MonoBehaviour
         if (auth != null)
         {
             auth.SignOut(); 
-            Debug.Log("Oturum kapat�ld�.");
+            Debug.Log("Oturum kapatıldı.");
         }
 
         SceneManager.LoadScene("LoginScene");
@@ -80,7 +80,7 @@ public class AuthManager : MonoBehaviour
 
         if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
         {
-            if (kayitBildirimText != null) kayitBildirimText.text = "Alanlar� doldurun.";
+            if (kayitBildirimText != null) kayitBildirimText.text = "Alanları doldurun.";
             return;
         }
 
@@ -99,7 +99,7 @@ public class AuthManager : MonoBehaviour
         }
         else
         {
-            if (bildirimText != null) bildirimText.text = "Kay�t Ba�ar�l�!";
+            if (bildirimText != null) bildirimText.text = "Kayıt Başarılı!";
             KayitPaneliniKapat();
             if (girisEmailInput != null) girisEmailInput.text = email;
         }
@@ -121,7 +121,7 @@ public class AuthManager : MonoBehaviour
 
     private IEnumerator GirisIslemi(string email, string password)
     {
-        if (bildirimText != null) bildirimText.text = "Ba�lan�yor...";
+        if (bildirimText != null) bildirimText.text = "Bağlanıyor...";
         var islem = auth.SignInWithEmailAndPasswordAsync(email, password);
         yield return new WaitUntil(() => islem.IsCompleted);
 
@@ -131,7 +131,7 @@ public class AuthManager : MonoBehaviour
         }
         else
         {
-            if (bildirimText != null) bildirimText.text = "Ho� geldiniz!";
+            if (bildirimText != null) bildirimText.text = "Hoş geldiniz!";
             yield return new WaitForSeconds(1.0f);
 
             if (isGermanSelected)
@@ -144,18 +144,18 @@ public class AuthManager : MonoBehaviour
     private string HataMesajiniSadelestir(System.AggregateException exception)
     {
         FirebaseException firebaseEx = exception.GetBaseException() as FirebaseException;
-        if (firebaseEx == null) return "Hata olu�tu.";
+        if (firebaseEx == null) return "Hata oluştu.";
 
         AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
 
         switch (errorCode)
         {
-            case AuthError.InvalidEmail: return "E-posta ge�ersiz.";
-            case AuthError.WrongPassword: return "�ifre hatal�.";
-            case AuthError.UserNotFound: return "Hesap bulunamad�.";
-            case AuthError.EmailAlreadyInUse: return "E-posta kay�tl�.";
-            case AuthError.WeakPassword: return "�ifre zay�f.";
-            case AuthError.NetworkRequestFailed: return "�nternet yok.";
+            case AuthError.InvalidEmail: return "E-posta geçersiz.";
+            case AuthError.WrongPassword: return "Şifre hatalı.";
+            case AuthError.UserNotFound: return "Hesap bulunamadı.";
+            case AuthError.EmailAlreadyInUse: return "E-posta kayıtlı.";
+            case AuthError.WeakPassword: return "Şifre zayıf.";
+            case AuthError.NetworkRequestFailed: return "İnternet yok.";
             default: return "Tekrar deneyin.";
         }
     }
