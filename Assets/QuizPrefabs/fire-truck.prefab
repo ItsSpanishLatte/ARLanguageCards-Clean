@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8964688066366006263}
   - component: {fileID: 1148414110251353670}
   - component: {fileID: 4829331598669093452}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: fire-truck-front-wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2103797268593973168}
   - component: {fileID: 7490696652495623932}
   - component: {fileID: 578949988541732820}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: fire-truck-rear-wheels-B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 7833470098534610381}
   - component: {fileID: 4130330689910037782}
   - component: {fileID: 6092541260384417918}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: fire-truck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 5407545243715336552}
   - component: {fileID: 7488796818775026642}
   - component: {fileID: 1305780720902365623}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: fire-truck-rear-wheels-A
   m_TagString: Untagged
   m_Icon: {fileID: 0}

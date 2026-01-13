@@ -10,12 +10,12 @@ public class AuthManager : MonoBehaviour
 {
     public static AuthManager Instance; 
 
-    [Header("GÝRÝÞ EKRANI (Ana Sahne)")]
+    [Header("Gï¿½Rï¿½ï¿½ EKRANI (Ana Sahne)")]
     public InputField girisEmailInput;
     public InputField girisPasswordInput;
     public TextMeshProUGUI bildirimText;
 
-    [Header("KAYIT PANELÝ (Pop-up)")]
+    [Header("KAYIT PANELï¿½ (Pop-up)")]
     public GameObject kayitPaneli;
     public InputField kayitEmailInput;
     public InputField kayitPasswordInput;
@@ -48,7 +48,7 @@ public class AuthManager : MonoBehaviour
         if (auth != null)
         {
             auth.SignOut(); 
-            Debug.Log("Oturum kapatýldý.");
+            Debug.Log("Oturum kapatï¿½ldï¿½.");
         }
 
         SceneManager.LoadScene("LoginScene");
@@ -59,8 +59,8 @@ public class AuthManager : MonoBehaviour
         isGermanSelected = true;
         if (bildirimText != null)
         {
-            bildirimText.text = "Modus: Deutsch ausgewählt";
-            bildirimText.color = Color.cyan;
+            bildirimText.text = "Modus: Deutsch ausgewÃ¤hlt";
+            bildirimText.color = Color.white;
         }
     }
 
@@ -80,7 +80,7 @@ public class AuthManager : MonoBehaviour
 
         if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
         {
-            if (kayitBildirimText != null) kayitBildirimText.text = "Alanlarý doldurun.";
+            if (kayitBildirimText != null) kayitBildirimText.text = "Alanlarï¿½ doldurun.";
             return;
         }
 
@@ -99,7 +99,7 @@ public class AuthManager : MonoBehaviour
         }
         else
         {
-            if (bildirimText != null) bildirimText.text = "Kayýt Baþarýlý!";
+            if (bildirimText != null) bildirimText.text = "Kayï¿½t Baï¿½arï¿½lï¿½!";
             KayitPaneliniKapat();
             if (girisEmailInput != null) girisEmailInput.text = email;
         }
@@ -121,7 +121,7 @@ public class AuthManager : MonoBehaviour
 
     private IEnumerator GirisIslemi(string email, string password)
     {
-        if (bildirimText != null) bildirimText.text = "Baðlanýyor...";
+        if (bildirimText != null) bildirimText.text = "Baï¿½lanï¿½yor...";
         var islem = auth.SignInWithEmailAndPasswordAsync(email, password);
         yield return new WaitUntil(() => islem.IsCompleted);
 
@@ -131,7 +131,7 @@ public class AuthManager : MonoBehaviour
         }
         else
         {
-            if (bildirimText != null) bildirimText.text = "Hoþ geldiniz!";
+            if (bildirimText != null) bildirimText.text = "Hoï¿½ geldiniz!";
             yield return new WaitForSeconds(1.0f);
 
             if (isGermanSelected)
@@ -144,18 +144,18 @@ public class AuthManager : MonoBehaviour
     private string HataMesajiniSadelestir(System.AggregateException exception)
     {
         FirebaseException firebaseEx = exception.GetBaseException() as FirebaseException;
-        if (firebaseEx == null) return "Hata oluþtu.";
+        if (firebaseEx == null) return "Hata oluï¿½tu.";
 
         AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
 
         switch (errorCode)
         {
-            case AuthError.InvalidEmail: return "E-posta geçersiz.";
-            case AuthError.WrongPassword: return "Þifre hatalý.";
-            case AuthError.UserNotFound: return "Hesap bulunamadý.";
-            case AuthError.EmailAlreadyInUse: return "E-posta kayýtlý.";
-            case AuthError.WeakPassword: return "Þifre zayýf.";
-            case AuthError.NetworkRequestFailed: return "Ýnternet yok.";
+            case AuthError.InvalidEmail: return "E-posta geï¿½ersiz.";
+            case AuthError.WrongPassword: return "ï¿½ifre hatalï¿½.";
+            case AuthError.UserNotFound: return "Hesap bulunamadï¿½.";
+            case AuthError.EmailAlreadyInUse: return "E-posta kayï¿½tlï¿½.";
+            case AuthError.WeakPassword: return "ï¿½ifre zayï¿½f.";
+            case AuthError.NetworkRequestFailed: return "ï¿½nternet yok.";
             default: return "Tekrar deneyin.";
         }
     }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8781287227534822028}
   - component: {fileID: 2996244286310240778}
   - component: {fileID: 3111679255831408392}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: civil-truck--B--front-wheels.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5360050633046981798}
   - component: {fileID: 6886296306773880287}
   - component: {fileID: 2316895414769297140}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: civil-truck-B-front-wheels.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 8889328600702220839}
   - component: {fileID: 768629567002367866}
   - component: {fileID: 4840348415520233277}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: civil-truck-B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 1585909918853743948}
   - component: {fileID: 6004291127636981957}
   - component: {fileID: 7644775310386739983}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: civil-truck-B-front-wheels.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1378099525804666802}
   - component: {fileID: 1949350608867256198}
   - component: {fileID: 1457988634898016506}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: police-car-rear-wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6165073241345936667}
   - component: {fileID: 4483564553801913681}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Red Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 1738185367250800343}
   - component: {fileID: 4553924213130459546}
   - component: {fileID: 6052430543746012061}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: police-car-front-wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4970399802311211220}
   - component: {fileID: 6574523901461798317}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Blue Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 8424044529644607433}
   - component: {fileID: 8158408167825249366}
   - component: {fileID: 5961949744805210229}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: police-car
   m_TagString: Untagged
   m_Icon: {fileID: 0}

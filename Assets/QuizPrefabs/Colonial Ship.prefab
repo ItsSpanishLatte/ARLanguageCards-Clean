@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7010675120254978035}
   - component: {fileID: 8948752437384972749}
   - component: {fileID: 5989201885030754030}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrel_Rum_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5466486277386639653}
   - component: {fileID: 5546924942227801577}
   - component: {fileID: 3795835386083202861}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lanterns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 2407462485436103886}
   - component: {fileID: 7888922716891047026}
   - component: {fileID: 107986395428237536}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mast_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 5433443961613466931}
   - component: {fileID: 3567657291496791716}
   - component: {fileID: 8334933849885841102}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rigs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 7666653636068270144}
   - component: {fileID: 1305203113278313643}
   - component: {fileID: 3995402249983242211}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boxes_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 757656120367543389}
   - component: {fileID: 2136256670493034163}
   - component: {fileID: 1026499504663923930}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hatch1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 4685802708096243575}
   - component: {fileID: 1293322827319718306}
   - component: {fileID: 3292845356193938377}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cannon_R_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 1798374570205527728}
   - component: {fileID: 8397032365991895243}
   - component: {fileID: 4486598014791841753}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hatch4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -677,7 +677,7 @@ GameObject:
   - component: {fileID: 6503715237288332678}
   - component: {fileID: 9030893456521315268}
   - component: {fileID: 1511811949018629649}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sandbags
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -760,7 +760,7 @@ GameObject:
   - component: {fileID: 162444705650448356}
   - component: {fileID: 8221188121100490537}
   - component: {fileID: 6873740826757041634}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrel_Small_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -843,7 +843,7 @@ GameObject:
   - component: {fileID: 8720443571412789160}
   - component: {fileID: 8660824800479642372}
   - component: {fileID: 1028932909292978112}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Doors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -926,7 +926,7 @@ GameObject:
   - component: {fileID: 8233933181758665352}
   - component: {fileID: 1913249350454758384}
   - component: {fileID: 7529581967169839058}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_Steps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1009,7 +1009,7 @@ GameObject:
   - component: {fileID: 3005342263566799609}
   - component: {fileID: 493073931312754725}
   - component: {fileID: 5378525502270952965}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ship_Windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1093,7 +1093,7 @@ GameObject:
   - component: {fileID: 6062719385909555733}
   - component: {fileID: 6000039750443642303}
   - component: {fileID: 5178028659776048277}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cannon_R_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1176,7 +1176,7 @@ GameObject:
   - component: {fileID: 3230381392620074593}
   - component: {fileID: 2059618191112877031}
   - component: {fileID: 1593601838468937073}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrel_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1259,7 +1259,7 @@ GameObject:
   - component: {fileID: 2725689861219056779}
   - component: {fileID: 4846684213984834806}
   - component: {fileID: 1740175969589674872}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1343,7 +1343,7 @@ GameObject:
   - component: {fileID: 2527518975048550074}
   - component: {fileID: 8417507003766699710}
   - component: {fileID: 1883767409532946514}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hatch3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1426,7 +1426,7 @@ GameObject:
   - component: {fileID: 3920234432855444933}
   - component: {fileID: 9145694801977270143}
   - component: {fileID: 7661923804246098736}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window_glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1509,7 +1509,7 @@ GameObject:
   - component: {fileID: 7037297675152857087}
   - component: {fileID: 2848843096379273189}
   - component: {fileID: 7025897574209386430}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Colonial Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1634,7 +1634,7 @@ GameObject:
   - component: {fileID: 746997308044961131}
   - component: {fileID: 4181550537931988380}
   - component: {fileID: 6020794154589951301}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrel_Rum_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1717,7 +1717,7 @@ GameObject:
   - component: {fileID: 360833137922359032}
   - component: {fileID: 3667462409010548572}
   - component: {fileID: 5681589436170310304}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Jib_back_sails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1800,7 +1800,7 @@ GameObject:
   - component: {fileID: 8821566030299258568}
   - component: {fileID: 8623374952983082826}
   - component: {fileID: 6631480718693371970}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sail_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1883,7 +1883,7 @@ GameObject:
   - component: {fileID: 4532268809897045826}
   - component: {fileID: 7115911458750029001}
   - component: {fileID: 1102101348108769538}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hooks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1966,7 +1966,7 @@ GameObject:
   - component: {fileID: 6534347220753762405}
   - component: {fileID: 5991369647718730981}
   - component: {fileID: 6738861964478546293}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Staircase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2049,7 +2049,7 @@ GameObject:
   - component: {fileID: 7096639222405487650}
   - component: {fileID: 3535662219190688577}
   - component: {fileID: 4378560330263161501}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ropes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2132,7 +2132,7 @@ GameObject:
   - component: {fileID: 996412114744989711}
   - component: {fileID: 6240980011137775126}
   - component: {fileID: 1500823470864943435}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Side_Windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2215,7 +2215,7 @@ GameObject:
   - component: {fileID: 662482686970415906}
   - component: {fileID: 3802109576939658824}
   - component: {fileID: 1139095186085037321}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cannon_R_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2298,7 +2298,7 @@ GameObject:
   - component: {fileID: 937140698086587213}
   - component: {fileID: 4040255584518882157}
   - component: {fileID: 4840794759725545300}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mast_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2381,7 +2381,7 @@ GameObject:
   - component: {fileID: 2906452732796420070}
   - component: {fileID: 1241381398865598398}
   - component: {fileID: 1774541451222014193}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2464,7 +2464,7 @@ GameObject:
   - component: {fileID: 6110661089845695204}
   - component: {fileID: 2477250296055588282}
   - component: {fileID: 5981386851406398928}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sail_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2547,7 +2547,7 @@ GameObject:
   - component: {fileID: 3656275819250323963}
   - component: {fileID: 3160512462109156755}
   - component: {fileID: 850980469519108465}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mast_Parts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2630,7 +2630,7 @@ GameObject:
   - component: {fileID: 3760507688776863660}
   - component: {fileID: 3639703314786411622}
   - component: {fileID: 5272972487318273260}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2713,7 +2713,7 @@ GameObject:
   - component: {fileID: 4550629171297598603}
   - component: {fileID: 8796848693512099579}
   - component: {fileID: 7542880616115770638}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cannon_R_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2796,7 +2796,7 @@ GameObject:
   - component: {fileID: 5270113246601234465}
   - component: {fileID: 8052462967728374000}
   - component: {fileID: 1595179723320888100}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: fore_mast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2879,7 +2879,7 @@ GameObject:
   - component: {fileID: 4545334589613135015}
   - component: {fileID: 9093355085027677748}
   - component: {fileID: 8553944729251667956}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrel_Small_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2962,7 +2962,7 @@ GameObject:
   - component: {fileID: 2405183456948304634}
   - component: {fileID: 6690120983851465531}
   - component: {fileID: 7849884041173913599}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cannon_Back_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3045,7 +3045,7 @@ GameObject:
   - component: {fileID: 9109671023057175062}
   - component: {fileID: 8059462757678454030}
   - component: {fileID: 4752471066904854491}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Treasure_Chest_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3128,7 +3128,7 @@ GameObject:
   - component: {fileID: 8051921980300890128}
   - component: {fileID: 8662487981360820733}
   - component: {fileID: 5105326864285672800}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hatch2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3211,7 +3211,7 @@ GameObject:
   - component: {fileID: 422551240835420610}
   - component: {fileID: 2964623650246506596}
   - component: {fileID: 4700504636616552116}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrel_Rum_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3294,7 +3294,7 @@ GameObject:
   - component: {fileID: 3937776735379670994}
   - component: {fileID: 7399594524892370588}
   - component: {fileID: 1929573191205570757}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cannon_Balls_Set 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3377,7 +3377,7 @@ GameObject:
   - component: {fileID: 2251764926508524333}
   - component: {fileID: 1296710073223761427}
   - component: {fileID: 2013571910149377187}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: front_basket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3460,7 +3460,7 @@ GameObject:
   - component: {fileID: 9190096919560214012}
   - component: {fileID: 6934132568250125551}
   - component: {fileID: 4431444704449226396}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrel_Rum_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3543,7 +3543,7 @@ GameObject:
   - component: {fileID: 469174545682657279}
   - component: {fileID: 8394635930446784817}
   - component: {fileID: 9056184273848660416}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cannons_Set
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3626,7 +3626,7 @@ GameObject:
   - component: {fileID: 1420698842814084236}
   - component: {fileID: 8331980899548679416}
   - component: {fileID: 7628698860862965009}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boxes_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3709,7 +3709,7 @@ GameObject:
   - component: {fileID: 3740566652085295500}
   - component: {fileID: 3766783407854153464}
   - component: {fileID: 2316118407727630298}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Treasure_Chest_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3792,7 +3792,7 @@ GameObject:
   - component: {fileID: 2443788070083852291}
   - component: {fileID: 1714467144378121594}
   - component: {fileID: 5658032672616630287}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Side_Cannons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3875,7 +3875,7 @@ GameObject:
   - component: {fileID: 760157570080104969}
   - component: {fileID: 5803068406621997129}
   - component: {fileID: 3019568038396814526}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrel_Rum_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3958,7 +3958,7 @@ GameObject:
   - component: {fileID: 97905244097551740}
   - component: {fileID: 7657740361625717981}
   - component: {fileID: 862724888730734921}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrel_Rum_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4041,7 +4041,7 @@ GameObject:
   - component: {fileID: 3364890249276617939}
   - component: {fileID: 4768068924610081851}
   - component: {fileID: 1015442087863653967}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ship_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4124,7 +4124,7 @@ GameObject:
   - component: {fileID: 5331300980088491333}
   - component: {fileID: 662440071306549536}
   - component: {fileID: 200456765964642468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cannon_R_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4207,7 +4207,7 @@ GameObject:
   - component: {fileID: 3435340827966309105}
   - component: {fileID: 7788019062024176652}
   - component: {fileID: 3912358351573197443}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrel_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4290,7 +4290,7 @@ GameObject:
   - component: {fileID: 62949411579875835}
   - component: {fileID: 6525368108506225733}
   - component: {fileID: 3868063820398364363}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cannon_Balls_Set
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4373,7 +4373,7 @@ GameObject:
   - component: {fileID: 4845811225640474080}
   - component: {fileID: 4073212407731114979}
   - component: {fileID: 2069706008337636676}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cannon_R_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4456,7 +4456,7 @@ GameObject:
   - component: {fileID: 8668035904333027136}
   - component: {fileID: 6048047858878124269}
   - component: {fileID: 8426507671725822429}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrel_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4539,7 +4539,7 @@ GameObject:
   - component: {fileID: 5038692738261763269}
   - component: {fileID: 2944068190808669673}
   - component: {fileID: 9092494994085622761}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ship_Fin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4622,7 +4622,7 @@ GameObject:
   - component: {fileID: 4730494883937570487}
   - component: {fileID: 6536748962623776368}
   - component: {fileID: 3314882159009149891}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boxes_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4705,7 +4705,7 @@ GameObject:
   - component: {fileID: 5907008248781672481}
   - component: {fileID: 5995080708154455249}
   - component: {fileID: 1690258366045251024}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrel_Small_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4788,7 +4788,7 @@ GameObject:
   - component: {fileID: 692857994590467238}
   - component: {fileID: 2845222310253901517}
   - component: {fileID: 3494338326473936668}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrel_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4871,7 +4871,7 @@ GameObject:
   - component: {fileID: 2408610007931916731}
   - component: {fileID: 1791437510449141965}
   - component: {fileID: 6221015321550690625}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boxes_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4954,7 +4954,7 @@ GameObject:
   - component: {fileID: 5706576521988264133}
   - component: {fileID: 4329746711194277468}
   - component: {fileID: 7061132331916721523}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5037,7 +5037,7 @@ GameObject:
   - component: {fileID: 3056354778482019299}
   - component: {fileID: 4333057256989022271}
   - component: {fileID: 6486150516035798327}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cannon_Back_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5120,7 +5120,7 @@ GameObject:
   - component: {fileID: 6714012785665962009}
   - component: {fileID: 5486576864518337382}
   - component: {fileID: 7553656569097573275}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ladders
   m_TagString: Untagged
   m_Icon: {fileID: 0}

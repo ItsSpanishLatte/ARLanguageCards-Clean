@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1954401757314519739}
   - component: {fileID: 4084652544121355937}
   - component: {fileID: 1418908739088745852}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ambulance-rear-wheels-B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 9039046657555042014}
   - component: {fileID: 711874009862405533}
   - component: {fileID: 2162647830345158494}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ambulance-front-wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 3750124357466833868}
   - component: {fileID: 6845565006737094360}
   - component: {fileID: 6773022452040164312}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ambulance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 5317082612054581486}
   - component: {fileID: 2500711656898388758}
   - component: {fileID: 3628649647490230036}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ambulance-rear-wheels-A
   m_TagString: Untagged
   m_Icon: {fileID: 0}

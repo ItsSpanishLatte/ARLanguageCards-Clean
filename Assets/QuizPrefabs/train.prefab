@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8857578714936336822}
   - component: {fileID: 1266067467764472045}
   - component: {fileID: 8373817353044874085}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: train-car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4852909340902058636}
   - component: {fileID: 1419952438513207732}
   - component: {fileID: 3684360413373105828}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: train
   m_TagString: Untagged
   m_Icon: {fileID: 0}
