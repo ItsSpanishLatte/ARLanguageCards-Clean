@@ -202,4 +202,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a469fd8b4aa5b249ad2445a61bffd42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nesneAdi: TRAIN
+  nesneAdi: Der Zug

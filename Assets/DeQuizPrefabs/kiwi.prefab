@@ -30,19 +30,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 944f91bda976fe544ac41f090012e16c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.0000000754979
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 944f91bda976fe544ac41f090012e16c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 1.7112914e-15
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 944f91bda976fe544ac41f090012e16c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 944f91bda976fe544ac41f090012e16c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.000000021855694
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 944f91bda976fe544ac41f090012e16c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -105,4 +105,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a469fd8b4aa5b249ad2445a61bffd42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nesneAdi: KIWI
+  nesneAdi: Die Kiwi
