@@ -980,12 +980,10 @@ MonoBehaviour:
   sonucText: {fileID: 1355436824}
   baslaButonu: {fileID: 663561627}
   spawnPoint: {fileID: 1004385061}
-  objeBoyutu: 0.03
   aralik: 0.2
   hedefBoyut: 0.15
   derinlik: 0
   zeminOfseti: 0
-  reticleObject: {fileID: 2093622703}
 --- !u!4 &813023719
 Transform:
   m_ObjectHideFlags: 0

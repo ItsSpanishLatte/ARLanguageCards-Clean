@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
-using System.Collections; 
+using System.Collections;
 
 public class GroundPlaneQuizManager : MonoBehaviour
 {
@@ -24,7 +24,6 @@ public class GroundPlaneQuizManager : MonoBehaviour
 
     [Header("Ayarlar")]
     public Transform spawnPoint;
-    public float objeBoyutu = 0.15f;
     public float aralik = 0.20f;
 
     [Header("Otomatik Boyut Ayarı")]
@@ -39,8 +38,7 @@ public class GroundPlaneQuizManager : MonoBehaviour
     private bool alanYerlesti = false;
     private bool oyunBasladi = false;
     private bool soruAktif = false;
-    
-    private bool gecisYapiliyor = false; 
+    private bool gecisYapiliyor = false;
 
     private string dogruCevapAdi;
     private List<GameObject> sahnedekiObjeler = new List<GameObject>();
@@ -53,7 +51,7 @@ public class GroundPlaneQuizManager : MonoBehaviour
 
     void Update()
     {
-        if (!oyunBasladi || !soruAktif || gecisYapiliyor) return; 
+        if (!oyunBasladi || !soruAktif || gecisYapiliyor) return;
 
         bool tiklandi = false;
         Vector2 ekranPos = Vector2.zero;
@@ -79,12 +77,12 @@ public class GroundPlaneQuizManager : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 100f))
         {
-            QuizObject quizObj = hit.collider.GetComponent<QuizObject>();
-            if (quizObj == null)
-                quizObj = hit.collider.GetComponentInParent<QuizObject>();
+            QuizObject quizObj = hit.collider.GetComponentInParent<QuizObject>();
 
             if (quizObj != null)
-                CevapVer(quizObj.nesneAdi, hit.collider.gameObject);
+            {
+                CevapVer(quizObj.nesneAdi, quizObj.gameObject);
+            }
         }
     }
 
@@ -92,22 +90,28 @@ public class GroundPlaneQuizManager : MonoBehaviour
     {
         if (alanYerlesti) return;
         alanYerlesti = true;
+
+        spawnPoint.SetParent(transform, false);
+        spawnPoint.localPosition = Vector3.zero;
+        spawnPoint.localRotation = Quaternion.identity;
+
         if (baslaButonu) baslaButonu.SetActive(true);
         if (sonucText) sonucText.text = "Alan yerleşti! Başla'ya bas.";
     }
 
     public void SoruyuBaslat()
     {
-        if (soruAktif) return;
+        if (soruAktif || gecisYapiliyor)
+        return;
 
         oyunBasladi = true;
         soruAktif = true;
-        gecisYapiliyor = false; // Kilidi aç
+        gecisYapiliyor = false;
 
         if (baslaButonu) baslaButonu.SetActive(false);
         if (sonucText) sonucText.text = "";
 
-        EskileriTemizle(); 
+        EskileriTemizle();
 
         Kategori kategori = kategoriler[Random.Range(0, kategoriler.Count)];
         List<GameObject> havuz = new List<GameObject>(kategori.prefabs);
@@ -121,37 +125,40 @@ public class GroundPlaneQuizManager : MonoBehaviour
         }
 
         int dogruIndex = Random.Range(0, secilenler.Count);
-        QuizObject dogruPrefabScript = secilenler[dogruIndex].GetComponent<QuizObject>();
+        QuizObject dogruQO = secilenler[dogruIndex].GetComponent<QuizObject>();
 
-        dogruCevapAdi = dogruPrefabScript != null && !string.IsNullOrEmpty(dogruPrefabScript.nesneAdi)
-            ? dogruPrefabScript.nesneAdi.Trim()
+        dogruCevapAdi = dogruQO != null && !string.IsNullOrEmpty(dogruQO.nesneAdi)
+            ? dogruQO.nesneAdi.Trim()
             : secilenler[dogruIndex].name.Replace("(Clone)", "").Trim();
 
         if (soruText) soruText.text = "BUL BAKALIM: " + dogruCevapAdi.ToUpper();
-
         if (TTSManager.Instance != null) TTSManager.Instance.Speak(dogruCevapAdi);
 
         for (int i = 0; i < secilenler.Count; i++)
         {
-            GameObject orjinalPrefab = secilenler[i];
-            GameObject yeniObje = Instantiate(orjinalPrefab, spawnPoint);
+            GameObject yeniObje = Instantiate(secilenler[i]);
+
             OtomatikBoyutAyarla(yeniObje);
 
             float x = (i - (secilenler.Count - 1) / 2f) * aralik;
-            yeniObje.transform.localPosition = new Vector3(x, 0.0f, derinlik);
+            Vector3 sag = spawnPoint.right * x;
+            Vector3 ileri = spawnPoint.forward * derinlik;
+            yeniObje.transform.position = spawnPoint.position + sag + ileri;
 
             Vector3 camPos = Camera.main.transform.position;
-            camPos.y = yeniObje.transform.position.y; 
+            camPos.y = yeniObje.transform.position.y;
             yeniObje.transform.LookAt(camPos);
 
+            Physics.SyncTransforms();
             YereOtur(yeniObje);
 
-            QuizObject orjinalQO = orjinalPrefab.GetComponent<QuizObject>();
             QuizObject yeniQO = yeniObje.GetComponent<QuizObject>();
             if (yeniQO == null) yeniQO = yeniObje.AddComponent<QuizObject>();
 
-            if (orjinalQO != null) yeniQO.nesneAdi = orjinalQO.nesneAdi;
-            else yeniQO.nesneAdi = orjinalPrefab.name.Replace("(Clone)", "").Trim();
+            QuizObject orjinalQO = secilenler[i].GetComponent<QuizObject>();
+            yeniQO.nesneAdi = orjinalQO != null
+                ? orjinalQO.nesneAdi
+                : secilenler[i].name.Replace("(Clone)", "").Trim();
 
             sahnedekiObjeler.Add(yeniObje);
         }
@@ -159,28 +166,33 @@ public class GroundPlaneQuizManager : MonoBehaviour
 
     void OtomatikBoyutAyarla(GameObject obj)
     {
-        // (Senin mevcut kodun aynı kalsın)
         obj.transform.localScale = Vector3.one;
+
         Renderer[] renderers = obj.GetComponentsInChildren<Renderer>();
         if (renderers.Length == 0) return;
+
         Bounds bounds = renderers[0].bounds;
         foreach (Renderer r in renderers) bounds.Encapsulate(r.bounds);
-        float enBuyukKenar = Mathf.Max(bounds.size.x, bounds.size.y, bounds.size.z);
-        if (enBuyukKenar <= 0f) return;
-        float scale = hedefBoyut / enBuyukKenar;
+
+        float maxSize = Mathf.Max(bounds.size.x, bounds.size.y, bounds.size.z);
+        if (maxSize <= 0f) return;
+
+        float scale = hedefBoyut / maxSize;
         obj.transform.localScale = Vector3.one * scale;
     }
 
     void YereOtur(GameObject obj)
     {
-        // (Senin mevcut kodun aynı kalsın)
         Renderer[] renderers = obj.GetComponentsInChildren<Renderer>();
         if (renderers.Length == 0) return;
+
         Bounds bounds = renderers[0].bounds;
         foreach (Renderer r in renderers) bounds.Encapsulate(r.bounds);
-        float objeninEnAltNoktasiY = bounds.min.y;
+
+        float enAltY = bounds.min.y;
         float zeminY = spawnPoint != null ? spawnPoint.position.y : 0f;
-        float fark = zeminY - objeninEnAltNoktasiY;
+        float fark = zeminY - enAltY;
+
         obj.transform.position += new Vector3(0, fark + zeminOfseti, 0);
     }
 
@@ -197,8 +209,7 @@ public class GroundPlaneQuizManager : MonoBehaviour
             }
 
             soruAktif = false;
-            gecisYapiliyor = true; 
-
+            gecisYapiliyor = true;
             StartCoroutine(SoruGecisRutini());
         }
         else
@@ -220,16 +231,19 @@ public class GroundPlaneQuizManager : MonoBehaviour
 
         EskileriTemizle();
 
-        yield return null; 
+        gecisYapiliyor = false;
+        soruAktif = false;
+
+        yield return null;
 
         SoruyuBaslat();
     }
 
     void EskileriTemizle()
     {
-        QuizObject[] kalanlar = FindObjectsOfType<QuizObject>();
-        foreach (QuizObject q in kalanlar)
-            if (q != null) Destroy(q.gameObject);
+        QuizObject[] tumQuizObjeleri = FindObjectsOfType<QuizObject>();
+        foreach (QuizObject q in tumQuizObjeleri)
+            Destroy(q.gameObject);
 
         sahnedekiObjeler.Clear();
     }

@@ -99,7 +99,13 @@ public class SpeechManager : MonoBehaviour
         string url = $"{API_URL}?key={geminiApiKey}";
         string base64Audio = Convert.ToBase64String(audioData);
 
-        bool isGerman = SceneManager.GetActiveScene().name.EndsWith("De");
+        string sName = SceneManager.GetActiveScene().name.ToLower();
+        
+        bool isGerman = sName.EndsWith("de") || 
+                        sName.Contains("frucht") || 
+                        sName.Contains("tier") || 
+                        sName.Contains("fahrzeug");
+
         string langName = isGerman ? "German" : "English";
 
         string promptText = puanlamaCumleIcinMi
@@ -125,7 +131,6 @@ public class SpeechManager : MonoBehaviour
                 int score = CalculateScore(hedef, spokenText);
 
                 ARObjectController[] tumObjeler = FindObjectsOfType<ARObjectController>();
-
                 foreach (ARObjectController obje in tumObjeler)
                 {
                     if (obje.GetObjeAdi() == hedef.ToLower().Trim())
@@ -138,7 +143,8 @@ public class SpeechManager : MonoBehaviour
                 if (DatabaseManager.Instance != null)
                 {
                     string tur = puanlamaCumleIcinMi ? "Cumle" : "Kelime";
-                    string aktifDil = isGerman ? "Almanca" : "Ingilizce";
+                    string aktifDil = isGerman ? "Almanca" : "Ingilizce"; 
+                    
                     DatabaseManager.Instance.SkoruKaydet(hedef, score, tur, aktifDil);
                     DatabaseManager.Instance.LogTut($"telaffuz_{aktifDil}", score.ToString());
                 }
